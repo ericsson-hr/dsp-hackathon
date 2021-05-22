@@ -63,7 +63,9 @@ Python
 MATLAB
    Required *MATLAB 2018b* or newer.
 
-   No use of toolboxes is allowed.
+   Only the following toolboxes may be used:
+
+   - Signal Processing Toolbox
 
 Some assignments could define output files. In that case, these should also be included in your submission.
 
