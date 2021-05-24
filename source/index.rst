@@ -20,26 +20,13 @@ As you solve different tasks, you will be able to post your solutions via GitHub
 
 We look forward to your participation!
 
-Opening Ceremony
-----------------
-
-On Monday, May 24 2021, we will be hosting an opening ceremony as a live event at which we will introduce our R&D center, present the concept of the hackathon, and answer any questions you may have for us. Click the button below and join us at 14:00.
-
-.. raw:: html
-
-   <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjVhM2FkYjQtN2IxYy00ZTJkLTkwZWUtMzIzZDAxMzdkZmU0%40thread.v2/0?context=%7b%22Tid%22%3a%2292e84ceb-fbfd-47ab-be52-080c6b87953f%22%2c%22Oid%22%3a%229cd7cc02-bcb8-4628-b2ef-286323e2bf5b%22%2c%22IsBroadcastMeeting%22%3atrue%7d&btype=a&role=a" class="button">Live Event</a>
-
-|
-You can also add the event to your calendar as an `iCal download`__.
-
-.. __: _static/opening_ceremony.ics
-
 .. toctree::
    :maxdepth: 1
    :hidden:
    
    about/howto
    about/propositions
+   about/opening_ceremony
    about/privacy
    about/rewards
    about/support
