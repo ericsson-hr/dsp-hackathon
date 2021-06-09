@@ -16,7 +16,7 @@ The competition is open to Croatian citizens. We highly encourage students pursu
 
 As you solve different tasks, you will be able to post your solutions via GitHub. Only you and reviewers from Ericsson Nikola Tesla will be able to view your solutions. You will then receive a review, which will enable you to move on to the next level. The best performers will be rewarded and offered a job interview or internship at Ericsson Nikola Tesla.
 
-**DSP Hackathon is open until June 14, 2021.**
+**DSP Hackathon is prolonged until June 28, 2021!**
 
 We look forward to your participation!
 
