@@ -32,7 +32,7 @@ During the competition, the status of the prize pool will be shown here in real-
 +--------------+----------------------+-------------------------------+
 | Level        | Assignment           | Unclaimed prizes              |
 +==============+======================+===============================+
-| Intermediate | Assignment 1         | 2 out of 8 prizes remain      |
+| Intermediate | Assignment 1         | 1 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
 |              | Assignment 2         | 3 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
