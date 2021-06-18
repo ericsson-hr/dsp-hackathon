@@ -34,7 +34,7 @@ During the competition, the status of the prize pool will be shown here in real-
 +==============+======================+===============================+
 | Intermediate | Assignment 1         | 1 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
-|              | Assignment 2         | 3 out of 8 prizes remain      |
+|              | Assignment 2         | 2 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
 |              | Assignment 3         | 3 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
