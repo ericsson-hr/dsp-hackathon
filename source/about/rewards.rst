@@ -36,7 +36,7 @@ During the competition, the status of the prize pool will be shown here in real-
 |              +----------------------+-------------------------------+
 |              | Assignment 2         | 2 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
-|              | Assignment 3         | 3 out of 8 prizes remain      |
+|              | Assignment 3         | 2 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
 |              | Assignment 4         | 3 out of 8 prizes remain      |
 |              +----------------------+-------------------------------+
