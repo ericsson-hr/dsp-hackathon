@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Designing Antenna Arrays &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Level" href="../advanced/index.html" />
+    <link rel="prev" title="AM demodulation using DSP" href="04_am_demodulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">Basic Level</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Intermediate Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_audio_filtering.html">Irritating sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_qam_receiver.html">4-QAM receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_ofdm_channelest.html">OFDM demodulator with communication channel effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_am_demodulation.html">AM demodulation using DSP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Designing Antenna Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#array-element">Array element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-array">Linear Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planar-array">Planar Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-data">Output Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-and-grading">Evaluation and Grading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Intermediate Level</a> &raquo;</li>
+        
+      <li>Designing Antenna Arrays</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/intermediate/05_beamforming.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="designing-antenna-arrays">
+<h1>Designing Antenna Arrays<a class="headerlink" href="#designing-antenna-arrays" title="Permalink to this headline">¶</a></h1>
+<p><strong>Assignment 05</strong></p>
+<p>You are given a task to design two antenna arrays with a goal of directing the radiation pattern toward a number of predefined targets. The first array you design is a linear array, with its elements placed along a line. You determine the y coordinate of each antenna element. The second array will be a planar array, with its elements placed on the zy plane, and the coordinates of the elements determined by you.</p>
+<div class="figure" id="id1">
+<img alt="../_images/coord.png" src="../_images/coord.png" />
+<p class="caption"><span class="caption-text">Fig. 1. Coordinate system</span></p>
+<div class="legend">
+</div>
+</div>
+<p>For each of the two antenna arrays, you are given several scenarios that determine in which direction the target is placed. For the linear array, the target will be offset only in azimuthal direction, while for the planar array, the target will be offset in both azimuth and elevation. Your job is to provide the beamforming coefficients for each of the scenarios that focus the radiation pattern toward the target, with the antenna array that you designed.</p>
+<p>The signal you’re using is narrowband, with a central frequency of 30 GHz.</p>
+<div class="section" id="array-element">
+<h2>Array element<a class="headerlink" href="#array-element" title="Permalink to this headline">¶</a></h2>
+<p>To make things more interesting, you will not be working with isotropic elements, rather with an antenna element of predefined radiation pattern. The pattern is given by a formula, and presented by a diagram. Here, <span class="math notranslate nohighlight">\(\phi\)</span> is the azimuth angle, and <span class="math notranslate nohighlight">\(\theta\)</span> is the elevation angle.</p>
+<div class="math notranslate nohighlight">
+\[D(\phi,\theta) = cos^2(\theta)\]</div>
+<div class="figure" id="id2">
+<img alt="../_images/pattern_3d.png" src="../_images/pattern_3d.png" />
+<p class="caption"><span class="caption-text">Fig. 2. 3D radiation pattern</span></p>
+<div class="legend">
+</div>
+</div>
+<div class="figure" id="id3">
+<img alt="../_images/pattern_cut.png" src="../_images/pattern_cut.png" />
+<p class="caption"><span class="caption-text">Fig. 3. Radiation pattern cut</span></p>
+<div class="legend">
+</div>
+</div>
+</div>
+<div class="section" id="linear-array">
+<h2>Linear Array<a class="headerlink" href="#linear-array" title="Permalink to this headline">¶</a></h2>
+<p>Design a single linear antenna array, with elements placed along the y axis, within the beamformer area designated in Fig. 1. The array should be designed to achieve the best directivity between the antenna array and the target for the following scenarios:</p>
+<dl class="docutils">
+<dt>Scenario 1</dt>
+<dd><p class="first">The target is directly in front of the antenna array.</p>
+<div class="last figure" id="id4">
+<img alt="../_images/scenario1.png" src="../_images/scenario1.png" />
+<p class="caption"><span class="caption-text">Fig. 4. Drawing of Scenario 1</span></p>
+</div>
+</dd>
+<dt>Scenario 2</dt>
+<dd><p class="first">The target is located along the longitudinal (y) axis of the antenna array, at an elevation of 30°.</p>
+<div class="last figure" id="id5">
+<img alt="../_images/scenario2.png" src="../_images/scenario2.png" />
+<p class="caption"><span class="caption-text">Fig. 5. Drawing of Scenario 2</span></p>
+</div>
+</dd>
+<dt>Scenario 3</dt>
+<dd><p class="first">The target is located along the longitudinal (y) axis of the beamforming system, at an elevation of 60°.</p>
+<div class="last figure" id="id6">
+<img alt="../_images/scenario3.png" src="../_images/scenario3.png" />
+<p class="caption"><span class="caption-text">Fig. 6. Drawing of Scenario 3</span></p>
+</div>
+</dd>
+<dt>Scenario 4</dt>
+<dd><p class="first">The target is located along the longitudinal (y) axis of the beamforming system, at an elevation of 70°.</p>
+<div class="last figure" id="id7">
+<img alt="../_images/scenario4.png" src="../_images/scenario4.png" />
+<p class="caption"><span class="caption-text">Fig. 7. Drawing of Scenario 4</span></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="planar-array">
+<h2>Planar Array<a class="headerlink" href="#planar-array" title="Permalink to this headline">¶</a></h2>
+<p>Design a single planar antenna array, with elements placed in the yz plane, within the beamformer area designated in Fig. 1. The array should be designed to achieve the best directivity between the antenna array and the target for the following scenario:</p>
+<dl class="docutils">
+<dt>Scenario 5</dt>
+<dd><p class="first">The target is located at an azimuth of 45° and elevation of 60° from the antenna array.</p>
+<p class="last"><strong>Note:</strong> Be sure to check the coordinate system setup in Fig. 1.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="output-data">
+<h2>Output Data<a class="headerlink" href="#output-data" title="Permalink to this headline">¶</a></h2>
+<p>Your solution as a MATLAB or Python script.</p>
+<dl class="docutils">
+<dt>elements1.csv</dt>
+<dd>The file contains a one-dimensional array representing the positions of antenna elements along the y axis in meters.</dd>
+<dt>scenarioX.csv</dt>
+<dd>e.g. <em>scenario1.csv</em>, …
+The file contains a one-dimensional array of complex numbers representing the weights applied to each antenna element. Weights are given for elements in the same order as they are listed in <em>elements1.csv</em>. Array length is equal to the number of elements in the beamforming system. All numbers are inside, or at the edge of the unit circle.</dd>
+<dt>elements2.csv</dt>
+<dd>The file contains a two-dimensional array representing the positions of antenna elements in the xy plane in meters. The first column is the x coordinate, and the second column is the y coordinate.</dd>
+<dt>scenario5.csv</dt>
+<dd>The file contains a one-dimensional array of complex numbers representing the weights applied to each antenna element. Weights are given for elements in the same order as they are listed in <em>elements2.csv</em>. Array length is equal to the number of elements in the beamforming system. All numbers are inside, or at the edge of the unit circle.</dd>
+</dl>
+<p>Complex numbers should be stored either in</p>
+<ul class="simple">
+<li>cartesian notation: <cite>a+bi</cite>, or <cite>a+bj</cite> or</li>
+<li>polar notation: <cite>P*exp(Ri)</cite></li>
+</ul>
+<p>Please delimit CSV data with a comma (<cite>,</cite>).</p>
+</div>
+<div class="section" id="evaluation-and-grading">
+<h2>Evaluation and Grading<a class="headerlink" href="#evaluation-and-grading" title="Permalink to this headline">¶</a></h2>
+<p>Your dataset will be processed in an evaluation system that simulates your antenna array with the given beamforming coefficients. A farfield diagram is calculated and evaluated at the target direction. Each scenario will be positively graded if the target is illuminated by the main lobe, up to 3 dB off its maximum directivity. A solution is valid if antenna arrays contain at least 4 elements.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../advanced/index.html" class="btn btn-neutral float-right" title="Advanced Level" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04_am_demodulation.html" class="btn btn-neutral float-left" title="AM demodulation using DSP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

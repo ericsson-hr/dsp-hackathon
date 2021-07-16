@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analog to Digital Conversion &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filtering in Digital Domain" href="filtering.html" />
+    <link rel="prev" title="Signals and Their Representations" href="signal.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analog to Digital Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sampling-and-hold">Sampling (and Hold)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nyquist-shannon-sampling-theorem">Nyquist-Shannon Sampling Theorem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-axis">Frequency Axis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#digitization">Digitization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantization-noise">Quantization Noise</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Analog to Digital Conversion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/adc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analog-to-digital-conversion">
+<h1>Analog to Digital Conversion<a class="headerlink" href="#analog-to-digital-conversion" title="Permalink to this headline">¶</a></h1>
+<p>Whenever a physical quantity should be processed in a computer system, it has to be represented in a form suitable for digital processing. Consider temperature measurements. A physical signal is measured on a thermometer and a value is read out from it. That way, a single temperature reading at a single moment is represented by a number of a given precision. We can say that the signal has been sampled and digitized. Let’s look more closely into these terms.</p>
+<div class="section" id="sampling-and-hold">
+<h2>Sampling (and Hold)<a class="headerlink" href="#sampling-and-hold" title="Permalink to this headline">¶</a></h2>
+<p>At any given point in time, you can look at a thermometer and see the value it measures at that point in time. That value will change later on, so what you see when you look at it is a value that is correct only for a certain window of time. Reading out the value during that window is referred to as <em>sampling</em>. If you check the temperature every hour, we say you’re sampling at a frequency of
+f <sub>s</sub> = 1/ 3600 Hz = 0.28 mHz.</p>
+<div class="figure" id="id1">
+<img alt="../_images/temperature.png" src="../_images/temperature.png" />
+<p class="caption"><span class="caption-text">Fig. 1. A temperature graph taken across 3 days.</span></p>
+<div class="legend">
+Solid line is an analogue temperature representation. Dots are samples taken at a sampling frequency of f <sub>s</sub> = 0.28 mHz.</div>
+</div>
+<p>Let’s consider two issues about the measurement method that this graph presents:</p>
+<dl class="docutils">
+<dt>Sampling and holding time</dt>
+<dd><p class="first">It takes time for a temperature sensor to read out a value. Some sensors are quick in following rapid movements in temperature, while other take time to settle in. It is necessary to expose the measuring element to the physical quantity for a sufficient period of time for it to settle in. This is called <em>sampling time</em>.</p>
+<p class="last">Once the value has been picked up by the sensor, you may want to make sure the sensor displays the measured value long enough so you can read it. That period is called <em>holding time</em>.</p>
+</dd>
+<dt>Seldom sampling</dt>
+<dd>Back to our ambient temperature graph, you will notice that in the morning of day 1 the temperature had been rising rapidly. If a temperature readout occurs every hour, it is impossible for the system to detect minor fluctuations in temperature. Higher sampling time allows us to pick up more frequent changes in the measured value. This is where the following theorem comes into play:</dd>
+</dl>
+<div class="section" id="nyquist-shannon-sampling-theorem">
+<h3>Nyquist-Shannon Sampling Theorem<a class="headerlink" href="#nyquist-shannon-sampling-theorem" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Any signal represented by its frequency spectrum, populated up until frequency <span class="math notranslate nohighlight">\(f_s/2\)</span>, can be faithfully reconstructed if it has been sampled by a sampling frequency of at least <span class="math notranslate nohighlight">\(f_s\)</span>.</div></blockquote>
+<p>The frequency <span class="math notranslate nohighlight">\(f_s\)</span> is commonly referred to as <em>Nyquist frequency</em>, and it is determined by examining the signal that will be sampled. For instance, if an audio signal is fully contained within the 20 kHz bandwidth, a sampling frequency of 40 kHz will sufficient to faithfully represent the signal in the digital domain. (At least as far as sampling goes…)</p>
+<div class="figure" id="id2">
+<img alt="../_images/spectrum.png" src="../_images/spectrum.png" />
+<p class="caption"><span class="caption-text">Fig. 2. A spectrogram of an audio sample.</span></p>
+</div>
+<p>The image in Fig. 2 represents a spectrogram of an audio sample containing male voice. Most spectral components reside at the lower end of the frequency range, and audio is virtually non-existent above 7 kHz. Therefore, a sampling frequency of 14 kHz is sufficient to sample this signal without losing relevant data.</p>
+<p>Notice the axes of this image. The y axis is labeled in units of dB/(ΔHz). Here, dB is a ratio relative to the maximum value that can be represented in the notation used by the selected audio format. Since this is a spectral plot, the amplitude can only be presented across frequency. Hence, Hz <sup>-1</sup>. The (ΔHz) is used to emphasize that each point on the frequency plot represents an amplitude measured at multiple frequency points. The width of the measurement window is determined by the used time-to-frequency transformation method. In this case, it was a 1024-point FFT.</p>
+</div>
+<div class="section" id="frequency-axis">
+<h3>Frequency Axis<a class="headerlink" href="#frequency-axis" title="Permalink to this headline">¶</a></h3>
+<p>For any sampled signal, its frequency-domain representation resides on a finite frequency axis, as opposed to an infinite frequency axis for unsampled signals. Regardless of the sampling frequency, the frequency axis is defined in interval <span class="math notranslate nohighlight">\([-\pi, \pi&gt;\)</span>. Since the sampled signal is discrete, this frequency axis is periodic. Therefore, it is equally correct to rather define it on any other interval, <span class="math notranslate nohighlight">\(2\pi\)</span> in length, such as <span class="math notranslate nohighlight">\([0, 2\pi&gt;\)</span> or <span class="math notranslate nohighlight">\(&lt;-\pi, \pi]\)</span>.</p>
+<p>The physical interpretation of the frequency axis is evident when we map the interval <span class="math notranslate nohighlight">\([-\pi, \pi&gt;\)</span> to <span class="math notranslate nohighlight">\([-f_s/2, f_s/2&gt;\)</span>.</p>
+</div>
+</div>
+<div class="section" id="digitization">
+<h2>Digitization<a class="headerlink" href="#digitization" title="Permalink to this headline">¶</a></h2>
+<p>Each sample, taken at equally spaced time intervals 1/f <sub>s</sub>, now has to be read out and its value written down. At this point, we are still reading an analog value, e.g. the level of mercury on a thermometer. We can be infinitely precise in this process, and write down as many decimals as we’d like. Still, by assigning a value to each sample, we’ve performed <em>digitization</em> of the physical value.</p>
+<p>The next step is to turn an infinitely precise value into something we can easily handle in a computer. This essentially boils down to rounding the numbers onto an arbitrarily defined discrete scale. This process is called <em>quantization</em>.</p>
+<p>Typically, quantizers work in equidistant steps spread through the range of the binary number representation that is used in the computer. For instance, if we have 3 bits available, then 2 <sup>3</sup> = 8 levels will be available for quantization. The distance between adjacent levels is typically referred to as 1 LSB.</p>
+<div class="figure" id="id3">
+<img alt="../_images/quantization.png" src="../_images/quantization.png" />
+<p class="caption"><span class="caption-text">Fig. 3. An example of a digitized signal and its quantized counterpart.</span></p>
+</div>
+<p>The signal represented in red in Fig. 3 has been constructed as a digitized signal, with a sampling period of 0.1. We quantized this signal onto a digital scale defined by integers in range [-9,10]. Rounding method used was round-to-higher.</p>
+<div class="section" id="quantization-noise">
+<h3>Quantization Noise<a class="headerlink" href="#quantization-noise" title="Permalink to this headline">¶</a></h3>
+<p>The issues of quantization, seen in this image, can be summarized by the term <em>quantization noise</em>. It is the offset between the value obtained after quantization, and the actual value of the digitized signal. For a sample above or below the quantization range, the quantization error is even higher, as the quantizer will have reached saturation with that signal.</p>
+<p>This effect directly degrades the signal in further processing. For each combination of signal and quantizer, the degradation can be determined in terms of signal-to-quantization-noise ratio (SQNR). For a statistically random signal, and a quantizer with Q quantization bits available, SQNR can be approximated as</p>
+<div class="math notranslate nohighlight">
+\[\textrm{SQNR} = 6.02 \cdot Q \, \textrm{dB}\]</div>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a self-study assignment <a class="reference internal" href="tasks.html#quantization-task"><span class="std std-ref">A Quantized Ode</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="filtering.html" class="btn btn-neutral float-right" title="Filtering in Digital Domain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="signal.html" class="btn btn-neutral float-left" title="Signals and Their Representations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

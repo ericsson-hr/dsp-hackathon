@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Basics of Antennas &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Antenna Arrays" href="antennas_arrays.html" />
+    <link rel="prev" title="Modulations" href="modulations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basics of Antennas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-antennas">Introduction to Antennas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wavelength-and-frequency">Wavelength and Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-distribution-of-fields">Spatial Distribution of Fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#radiation-pattern-directivity-and-gain">Radiation Pattern, Directivity and Gain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#far-field-calculations">Far-Field Calculations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simplifications-for-linear-antennas">Simplifications for Linear Antennas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Basics of Antennas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/antennas_basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basics-of-antennas">
+<h1>Basics of Antennas<a class="headerlink" href="#basics-of-antennas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-antennas">
+<h2>Introduction to Antennas<a class="headerlink" href="#introduction-to-antennas" title="Permalink to this headline">¶</a></h2>
+<p>Since the 19th century series of experiments (but also before), it has been known that electric charges and currents couple electric and magnetic energy into space around it, giving rise to electric and magnetic fields. For the transmission of electromagnetic energy to large distance from sources, of most interest is a type of fields termed <strong>radiating fields</strong>. These fields decay with distance from source <em>R</em> as <em>1/R</em>, which is the “slowest” observed spatial decay of fields in 3D space.</p>
+<p>Such dependency is a distinctive characteristic of radiating fields by which they differ from other types of fields coupled into space by sources. Other fields, such as static and quasi-static, decay at a rate of, <span class="math notranslate nohighlight">\(1/R^2\)</span>, <span class="math notranslate nohighlight">\(1/R^3\)</span>, etc. Therefore, radiating fields prevail in the total field in regions far away from the source.
+In addition, they propagate through space like waves, where time-varying electric and magnetic fields are interplayed by creating each other throughout space, as shown in Fig. 1. These electromagnetic waves travel through free space at the speed of light, which is approximately <span class="math notranslate nohighlight">\(c=3 \cdot 10^8\)</span> m/s.</p>
+<div class="figure" id="id1">
+<img alt="../_images/F1_radiation_mechanism.svg" src="../_images/F1_radiation_mechanism.svg" /><p class="caption"><span class="caption-text">Fig. 1. A very simplified illustration of radiation mechanism.</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>The radiating fields are proportional to the <strong>acceleration of charge</strong>, which corresponds to the time derivation of current. Thus, having an alternating (AC) current is a necessary condition for the creation of radiating fields. This in turn means that basically any device (or structure) with AC current would produce radiating fields. As stated earlier, radiating fields are not the only type that exist. To be sure that we can ignore other field types, either</p>
+<ul class="simple">
+<li>the radiating structure has to be large enough, or</li>
+<li>we must move far enough from the source.</li>
+</ul>
+<p>An <strong>antenna</strong> is a device that efficiently radiates and receives electric and magnetic fields in space.</p>
+</div>
+<div class="section" id="wavelength-and-frequency">
+<h2>Wavelength and Frequency<a class="headerlink" href="#wavelength-and-frequency" title="Permalink to this headline">¶</a></h2>
+<p>When we say <em>large enough</em> and <em>far enough</em>, we mean this in terms of wavelength of the electromagnetic wave (sinusoidal waves are assumed). This leads us to the formula relating wavelength and frequency of operation in free space:</p>
+<div class="math notranslate nohighlight">
+\[\lambda =\frac{c}{f}\]</div>
+<p>Now, in terms of wavelength, we can find that efficient coupling of electromagnetic energy into radiating fields occurs when device dimension <em>D</em> is comparable to lambda, while the full effect of radiating fields is observable at distances much larger than wavelength (<span class="math notranslate nohighlight">\(R \gg \lambda\)</span>). In that case we can say that we are in the <strong>far field</strong> of the antenna. Several engineering criteria for near-to-far field boundary (<span class="math notranslate nohighlight">\(R_{FF}\)</span>) are available in literature, however in antenna engineering the most common one (valid for most common types of antennas) is:</p>
+<div class="math notranslate nohighlight">
+\[R_{FF}  = \frac{{2\cdot D}^2}{\lambda}\]</div>
+<p>To illustrate the matter, we show some frequencies of interest and their corresponding wavelengths (see table below). Contemporary microwave communications are mostly in the range from around 300 MHz up to around 30 GHz (the spectrum is to be extended to higher frequencies in the future), which gives rise to wavelengths measured in millimeters and centimeters. As a rule of thumb it is useful to remember that 300 MHz in frequency corresponds to 1 m in wavelength.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="37%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Frequency</th>
+<th class="head">Wavelength</th>
+<th class="head">Application</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>50 Hz</td>
+<td>6000 km</td>
+<td>AC current network</td>
+</tr>
+<tr class="row-odd"><td>300 MHz</td>
+<td>1 m</td>
+<td>UHF communications</td>
+</tr>
+<tr class="row-even"><td>2.4 GHz</td>
+<td>12.5 cm</td>
+<td>WiFi</td>
+</tr>
+<tr class="row-odd"><td>30 GHz</td>
+<td>10 mm</td>
+<td>5G - high band</td>
+</tr>
+<tr class="row-even"><td>193.5 THz</td>
+<td>1550 nm</td>
+<td>Optical (infrared)
+communications</td>
+</tr>
+<tr class="row-odd"><td>500 THz</td>
+<td>600 nm</td>
+<td>Visible light
+(orange color)</td>
+</tr>
+</tbody>
+</table>
+<p>By considering frequency-to-wavelength relations one can also note that some structures, such as a coiled wire (Fig. 2), can at the same time be considered both as an inductor (if the frequency of operation is say 50 Hz) and as antenna (at the frequency of say 400 MHz).</p>
+<p>It is the size in wavelength that matters!</p>
+<div class="figure" id="id2">
+<img alt="../_images/F2_coil.png" src="../_images/F2_coil.png" />
+<p class="caption"><span class="caption-text">Fig. 2. Coiled wire – Depending on frequency it can either be an inductor or an antenna</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="spatial-distribution-of-fields">
+<h2>Spatial Distribution of Fields<a class="headerlink" href="#spatial-distribution-of-fields" title="Permalink to this headline">¶</a></h2>
+<p>Efficient antenna design needs to address several basic questions:</p>
+<ol class="arabic simple">
+<li>How to efficiently couple electromagnetic energy into radiating fields at the given frequency?</li>
+<li>How to radiate energy in the desired direction and suppress radiation in the undesired direction?</li>
+<li>How to conform the antenna to the environment (i.e. operating device) to not make it obtrusive?</li>
+</ol>
+<p>Given that any wireless communication device, system or sensor needs an antenna, and that there is a myriad of possible operating environments, these questions are the principal reason why we have so many different types of antennas today. The answers to the above questions are germane to the “art” of antenna design.
+If we (for now) assume that we have obtained efficient energy coupling from the antenna into radiating fields, we turn our attention to how radiating fields (and energy) are distributed in space.</p>
+<div class="section" id="radiation-pattern-directivity-and-gain">
+<h3>Radiation Pattern, Directivity and Gain<a class="headerlink" href="#radiation-pattern-directivity-and-gain" title="Permalink to this headline">¶</a></h3>
+<p>Analysis of spatial properties of radiating fields is typically done in spherical coordinate system <span class="math notranslate nohighlight">\(\left(r, \theta,\varphi\right)\)</span>, with antenna in its origin. We are interested in the angular <span class="math notranslate nohighlight">\(\left(\theta,\varphi\right)\)</span> distribution of radiated power density (or fields) at a sphere on some large distance from the antenna (<span class="math notranslate nohighlight">\(R \gg \lambda\)</span>), where radiating fields dominate over all other fields. This spatial distribution is presented by the antenna radiation pattern, which can be displayed in 3D or (more often) in principal planes (2D).</p>
+<div class="figure" id="id3">
+<img alt="../_images/F3_RadPat_temp.png" src="../_images/F3_RadPat_temp.png" />
+<p class="caption"><span class="caption-text">Fig. 3. Example of a horn antenna and its 3D radiation pattern</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>As a reference, we use a so-called isotropic antenna, which radiates equally in all directions in space. Total radiated power (TRP) of an isotropic antenna is equally distributed across the surface area of a large sphere with radius <em>R</em>, giving rise to power density <em>S</em>:</p>
+<div class="math notranslate nohighlight">
+\[S_\textrm{isotropic}=\frac{\textrm{TRP}}{4\pi R^2}\ \mathrm{\left[\frac{W}{m^2}\right]}\]</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Power density is proportional to field intensity-squared. So, for fields decaying with <span class="math notranslate nohighlight">\(1/R\)</span>, power density decays as <span class="math notranslate nohighlight">\(1/R^2\)</span>.</p>
+</div>
+<p>However, an isotropic antenna does not exist in practice. For any practical antenna, radiated power density is larger in some spatial directions, and smaller in other. Isotropic power density thus merely represents an average radiated power density. To characterize the spatial distribution of antenna’s radiated power, we introduce a quantity named <strong>directivity</strong>, which is defined as the actual power density normalized to the (hypothetical) isotropic power density:</p>
+<div class="math notranslate nohighlight">
+\[D\left(\theta,\varphi\right)=\frac{S\left(\theta,\varphi\right)}{S_\textrm{isotropic}}\]</div>
+<p>Alongside directivity, another parameter that describes the radiation properties of an antenna is <strong>gain</strong>, which also takes into account losses in the antenna structure (expressed via radiation efficiency <span class="math notranslate nohighlight">\(\eta\)</span>) which arise due to dissipation of power in metals or dielectrics. For lossless antennas (often considered in analysis as a first approximation) directivity and gain are equal.</p>
+<div class="math notranslate nohighlight">
+\[G\left(\theta,\varphi\right)=\eta\cdot D\left(\theta,\varphi\right)\]</div>
+<p>Although both directivity and gain are functions of direction <span class="math notranslate nohighlight">\(\left(\theta,\varphi\right)\)</span>, we conventionally observe the direction of maximum radiation intensity when characterizing an antenna. That way, we have one number to characterize antenna properties. We can also note that by focusing radiated power into some desired direction we obtain a <em>beam</em>, and with that larger power density and “better” wireless link in that direction. These points are further illustrated in Fig. 4:</p>
+<div class="figure" id="id4">
+<img alt="../_images/F4_patterns.svg" src="../_images/F4_patterns.svg" /><p class="caption"><span class="caption-text">Fig. 4. Comparison of isotropic and directive antenna radiation patterns</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="far-field-calculations">
+<h2>Far-Field Calculations<a class="headerlink" href="#far-field-calculations" title="Permalink to this headline">¶</a></h2>
+<p>We now provide a glimpse into calculations of electromagnetic field in space. This would allow us to generalize the procedure of array design and get an insight into how far fields are calculated as a spatial response to the sources. The sources of electromagnetic fields in space are time-varying currents and charges (the latter can be expressed via currents for sinusoidal excitation). Current densities <strong>J</strong> generate vector potential <strong>A</strong> (also sometimes called <em>electromagnetic momentum</em>), which eventually gives rise to fields in space (<strong>E</strong> and <strong>H</strong>). Introducing potentials as an intermediate step in field calculation from sources is a standard procedure in antenna analysis.</p>
+<p>Of practical interest here is to put focus on potentials and fields at large distances from the antenna (i.e. on radiating fields), where equations simplify considerably.</p>
+<p>The starting equation is the <strong>radiation integral</strong>, which relates current density distribution <strong>J</strong> and vector potential <strong>A</strong> in space. It is derived directly from Maxwell’s equations:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}\left(\mathbf{r}\right)=\mu\cdot\int_{V}{\mathbf{J}\left(\mathbf{r}'\right)\frac{e^{-j\beta\left|\mathbf{r}-\mathbf{r}'\right|}}{4\pi\left|\mathbf{r}-\mathbf{r}'\right|}dV'}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\left|\mathbf{r}-\mathbf{r}'\right|\)</span> is the distance from observation point <strong>r</strong> to source point <strong>r’</strong>, while <span class="math notranslate nohighlight">\(\beta=\frac{2\pi }{\lambda }\)</span> is the free space wavenumber. Integration is performed over volume <em>V</em> in which <span class="math notranslate nohighlight">\(\mathbf{\mathrm{J}}(\mathbf{r}')\neq 0\)</span> for all source points <strong>r’</strong> (i.e. volume elements <em>dV’</em>), while each source point introduces a phase delay <span class="math notranslate nohighlight">\(e^{-j\beta\left|\mathbf{r}-\mathbf{r}'\right|}\)</span> to the observation point.</p>
+<div class="figure" id="id5">
+<img alt="../_images/F5_nearVsFar.svg" src="../_images/F5_nearVsFar.svg" /><p class="caption"><span class="caption-text">Fig. 5. Near field vs. far field geometry</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>Introducing so-called <em>far-field approximations</em> results in simplified version of the radiation integral:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}\left(\mathbf{r}\right)=\mu\cdot\frac{e^{-j\beta R}}{4\pi R}\int_{V}{\mathbf{J}\left(\mathbf{r}'\right)e^{j{\boldsymbol{\overset{\sim }{\beta}}}\cdot\mathbf{r}'}dV'}\]</div>
+<p>The integral part of the above term is the spatial (3D) Fourier transform of current distribution on the antenna and is also termed <em>space factor</em> and denoted as <span class="math notranslate nohighlight">\(\mathbf{F}\left({\boldsymbol{\widetilde{\beta }}}\right)=\mathbf{F}\left ( \beta \hat{\mathbf{r}} \right )\)</span>. The building blocks in this transform are the <strong>plane waves</strong> in various directions <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}\)</span>, which are in spherical coordinates described by angular pair <span class="math notranslate nohighlight">\(\left(\theta,\varphi\right)\)</span> representing elevation and azimuthal angle, respectively. The far-field electric and magnetic fields derived from vector potential are generally proportional to <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\varphi\)</span> components of the space factor.</p>
+<div class="section" id="simplifications-for-linear-antennas">
+<h3>Simplifications for Linear Antennas<a class="headerlink" href="#simplifications-for-linear-antennas" title="Permalink to this headline">¶</a></h3>
+<p>To visualize the properties of the space factor and its role in radiation pattern calculations it is interesting to consider the linear antenna, where the volume integral reduces to a line integral, while 3D spatial Fourier transform reduces to 1D. We consider a finite line source placed along the <em>z</em> direction and <em>L</em> in length, containing current  <span class="math notranslate nohighlight">\(I\left(z^\prime\right)\)</span>. The space factor <span class="math notranslate nohighlight">\(\mathbf{F}\left({\boldsymbol{\widetilde{\beta }}}\right)\)</span> is then reduced to:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}\left({\boldsymbol{\widetilde{\beta }}}\right)\equiv \mathbf{\hat{z}}\cdot F \left(\beta_z\right)= \mathbf{\hat{z}}\cdot\int_{L}{I\left(z^\prime\right)e^{j\beta_zz^\prime}dz^\prime}\]</div>
+<p>Here we introduced <span class="math notranslate nohighlight">\(\beta_z=\boldsymbol{\widetilde{\beta }}\cdot\hat{\mathbf{z}}=\beta \cos{\theta}\)</span>. This is the is the wavenumber in <em>z</em> direction (Fig. 6), and describes the projection of the plane wave in the observed general direction <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}\)</span> onto <em>z</em>- axis (this is the axis containing sources in this case). Note that in this case the direction <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}\)</span> has assigned to it only one spatial angle <span class="math notranslate nohighlight">\(\theta\)</span> that is relevant to the space factor, which means that the space factor for line sources acts only in one (elevation) plane.</p>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/F6_betaZ1.svg"><img alt="../_images/F6_betaZ1.svg" src="../_images/F6_betaZ1.svg" width="60%" /></a>
+<p class="caption"><span class="caption-text">Fig. 6. Wavenumber in <em>z</em>-direction</span></p>
+<div class="legend">
+</div>
+</div>
+<p>Current distribution is then given as inverse Fourier transform of <span class="math notranslate nohighlight">\(F \left(\beta_z\right)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[I\left ( z^\prime \right )=\frac{1}{2\pi}\cdot\int_{-\infty}^{\infty}F \left (\beta_z \right )e^{-j\beta_zz^\prime}d\beta_{z}\]</div>
+<p>Therefore, to determine the far field radiation pattern one needs to perform spatial Fourier transformation of source distribution and thereby find the vector potential <span class="math notranslate nohighlight">\(\mathbf{A(r)}\)</span>, from which the fields follow using standard vector analysis procedures. For line sources, magnitudes of radiating <strong>E</strong> and <strong>H</strong> fields are proportional to space factor <span class="math notranslate nohighlight">\(F\left(\beta_z\right)\)</span>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="antennas_arrays.html" class="btn btn-neutral float-right" title="Antenna Arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modulations.html" class="btn btn-neutral float-left" title="Modulations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

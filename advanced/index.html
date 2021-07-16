@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Level &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Designing Antenna Arrays" href="../intermediate/05_beamforming.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">Basic Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Level</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#digital-radio-receiver">Digital Radio Receiver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-and-supplement-files">Input and Supplement Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-files">Output Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-and-grading">Evaluation and Grading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Advanced Level</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/advanced/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-level">
+<h1>Advanced Level<a class="headerlink" href="#advanced-level" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the Advanced Level of the DSP Hackathon!</p>
+<p>You are given a single assignment.</p>
+<div class="section" id="digital-radio-receiver">
+<h2>Digital Radio Receiver<a class="headerlink" href="#digital-radio-receiver" title="Permalink to this headline">¶</a></h2>
+<p>Your goal in this task is to design the digital part of a radio receiver. Based on the signal received on the ADC, you will need to determine the content of a secretly coded sound signal. As an input, you are given the file <cite>RX_ADC_samples.bin</cite>, which represents the samples at the output of the ADC.</p>
+<p>Following facts are known about the ADC:</p>
+<ul class="simple">
+<li>ADC has one input</li>
+<li>Resolution of the ADC is 8 bits</li>
+<li>ADC represents its result (sample) in two’s complement format</li>
+<li>ADC’s power supply has limits +/- 1V</li>
+<li>ADC sampling’s rate is 491.52 MSPS</li>
+</ul>
+<p>Since you are going to develop an <em>offline</em> software model of the radio receiver, it is always good to simplify your model. The first simplification is to use a floating-point format instead of an integer format. For that, you will need to convert ADC results from binary (8 bit) format to a floating-point format which represents ADC’s input voltage level. Any further calculation should be done on the ADC’s input signal in floating-point/voltage level representation.</p>
+<p>Regarding the structure of the received signal, LTE (4G) standard is used as Radio Access Technology. However, the person who designed the radio transmitter used to generate this signal changed some of the standard characteristics, so that you would not have an easy job of decoding the information. However, the following characteristics are the same as in the LTE standard:</p>
+<ol class="arabic simple">
+<li>Sampling frequency of the LTE carrier</li>
+<li>Used FFT size</li>
+<li>Mapping of occupied sub-carriers</li>
+<li>Length of the cyclic prefix (Long Cyclic Prefix is used)</li>
+</ol>
+<p>For information about LTE standard, we suggest looking into the following <a class="reference external" href="https://home.zhaw.ch/kunr/NTM1/literatur/LTE%20in%20a%20Nutshell%20-%20Physical%20Layer.pdf">link</a>. There, you will find useful information in Table 1.</p>
+<p>Note that all decoding should be done on the Physical layer. There are no <em>special</em> OFDM symbols, as in the LTE standard. Every OFDM symbol has the same number and same positions of data, pilot and “DC” subcarriers. All pilot subcarriers on the transmitter side have the same amplitude and zero phase.</p>
+<p>In order to decode the received information, your radio receiver must have at least the following blocks:</p>
+<ol class="arabic simple">
+<li>“First OFDM Symbol” start detector</li>
+<li>1 FIR filter with a maximum of 35 real coefficients</li>
+<li>Sound (wav) file generator - Generates sound file in <em>wav</em> format from a bitstream stored in a <em>bin</em> file, where sound samples are reproduced with sampling frequency f=8192 SPS.</li>
+<li>An FFT block</li>
+<li>Demodulated data serializer - bitstream (<em>bin</em> file) generator</li>
+<li>1 downsampling block - Only integer downsampling factors can be used. Antialiasing filter is not included here.</li>
+<li>Cyclic prefix remover</li>
+<li>1 Complex mixer (NCO)</li>
+<li>N-QAM demodulator - Choose N as you best see fit.</li>
+<li>Channel compensation block - Amplitude/phase adjustment of data subcarriers due to channel effects.</li>
+</ol>
+<p>Your task is to use recommended blocks above in order to decode information (generate received bitstream as <em>bin</em> file and sound as <em>wav</em> file). Blocks presented here are independent part of Radio receiver functionality, you can implement it in any software form you like. All blocks can work on complex I/Q data, or real data, it is up to you to decide when/what is best fitting.</p>
+<p>Regarding components 1, 3, 5 and 9 additional information is needed:</p>
+<ul class="simple">
+<li>The “First OFDM symbol” start detector is based on recognizing the cyclic prefix pattern of an OFDM symbol. You can use any signal processing technique which you find most appropriate to implement it.</li>
+<li>N-QAM demodulation is performed based on constellation diagrams presented in the Basic level material.</li>
+<li>Demodulated data serializer works intuitively, where bitstream can be represented as long 1-D sequence of ‘0’s and ‘1’s. In each iteration of data subcarrier demodulation, next <em>Nbit=log2(N)</em> decoded bits are added at the end of the currently generated bitstream. Generated bitstream represents a sequence of bytes (8-bit chunks of data), where the first bit in each byte is most significant. These bytes must be sequentially stored in the <em>bin</em> file.</li>
+<li>To convert the <em>bin</em> file to a <em>wav</em>-formatted sound, you are given example scripts <em>wavFileGenerator.py</em> and <em>wavFileGenerator.m</em> with example binary file <em>exampleSamples.bin</em> as an input. You can use these scripts as they are for your solution as well.</li>
+</ul>
+<div class="section" id="input-and-supplement-files">
+<h3>Input and Supplement Files<a class="headerlink" href="#input-and-supplement-files" title="Permalink to this headline">¶</a></h3>
+<p>Source files in <a class="reference download internal" download="" href="../_downloads/68b718807dbb60cb62fc061ac6606d68/01_radio_receiver.zip"><code class="xref download docutils literal notranslate"><span class="pre">01_radio_receiver.zip</span></code></a></p>
+<dl class="docutils">
+<dt>RX_ADC_samples.bin</dt>
+<dd>The OFDM signal, as received by the ADC.</dd>
+<dt>exampleSamples.bin</dt>
+<dd>A sample bitstream, as demodulated by a functional digital radio receiver.</dd>
+<dt>wavFileGenerator.m and wavFileGenerator.py</dt>
+<dd>Scripts for converting the <cite>exampleSamples.bin</cite> file to an audio stream.</dd>
+</dl>
+</div>
+<div class="section" id="output-files">
+<h3>Output Files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h3>
+<p>As a result of this task, you will need to generate the following files:</p>
+<dl class="docutils">
+<dt><em>raw_samples.bin</em></dt>
+<dd>Binary file with <em>uint8</em> data, created from the generated bitstream.</dd>
+<dt><em>sound.wav</em></dt>
+<dd>The received sound signal.</dd>
+</dl>
+<p>Your solution as a MATLAB or Python script.</p>
+</div>
+<div class="section" id="evaluation-and-grading">
+<h3>Evaluation and Grading<a class="headerlink" href="#evaluation-and-grading" title="Permalink to this headline">¶</a></h3>
+<p>The criteria for passing this task is</p>
+<ul class="simple">
+<li>Bit Error Rate (BER) less then 1%, measured based on the bitstream in <em>raw_samples.bin</em></li>
+<li>wav file which qualitatively plays expected sound</li>
+</ul>
+<p>That would be all, we wish you good luck and happy coding :)</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../intermediate/05_beamforming.html" class="btn btn-neutral float-left" title="Designing Antenna Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

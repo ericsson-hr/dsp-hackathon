@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Antenna Arrays &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OFDM" href="ofdm.html" />
+    <link rel="prev" title="Basics of Antennas" href="antennas_basic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Antenna Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-element-arrays">Two-element Arrays</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-of-two-element-arrays">Examples of Two-element Arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-arrays">Linear Arrays</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#designing-linear-arrays">Designing Linear Arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#planar-arrays">Planar Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Antenna Arrays</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/antennas_arrays.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="antenna-arrays">
+<h1>Antenna Arrays<a class="headerlink" href="#antenna-arrays" title="Permalink to this headline">¶</a></h1>
+<p>Consider a simplified point-to-point wireless link, consisting of transmitting (TX) and receiving (RX) points in space. Connection is achieved using electromagnetic waves in free space. Antennas are used to ensure efficient signal transmission between two points. Ideally, the radiated signal from the TX antenna would be focused into a narrow beam that would be directed towards the RX point. The goal is not to waste energy by radiating into directions at which it is not needed.</p>
+<p>When designing antennas, two principal questions need to be answered to create a narrow, highly directive beam:</p>
+<ol class="arabic simple">
+<li>How to create a narrow beam?</li>
+<li>How to control (steer) the beam shape and direction in time?</li>
+</ol>
+<p>The answer to the first question is to have a large radiating structure – antenna – in terms of wavelength. A general rule is “the larger the antenna, the narrower the beam”. As for the second question, one can control the beam mechanically, simply by rotating the antenna, or electronically, by designing a spatial current distribution that provides the desired radiating beam. The latter is achieved by discretizing the radiating structure into multiple antenna elements which then form a composite antenna, i.e. an <strong>antenna array</strong>.</p>
+<p>To achieve a desired current distribution along the antenna array, each antenna element shall be fed by its own amplifier and phase shifter. These will be electronically controlled, and the designer will be able to change an amplitude taper and phase shift at each antenna element in real time. This process is referred to as <strong>beamforming</strong>, as the applied current distribution on an antenna array will give rise to a specific beamforming pattern in the farfield of the antenna system. The use of antenna arrays and electronic steering provides large flexibility and speed in controlling the antenna beam and is of particular interest in modern wireless communication systems. Here we present basic aspects of antenna arrays and explore how antenna design meets digital signal processing in the field of antenna arrays.</p>
+<div class="figure" id="id1">
+<img alt="../_images/F1_wlink.svg" src="../_images/F1_wlink.svg" /><p class="caption"><span class="caption-text">Fig. 1. A point-to-point wireless link connected via a narrow beam.</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="two-element-arrays">
+<h2>Two-element Arrays<a class="headerlink" href="#two-element-arrays" title="Permalink to this headline">¶</a></h2>
+<p>If we observe a single antenna at a farfield distance <em>r</em>, we can express the electric field it generates as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E(r)}=E_0e^{j\alpha}\cdot\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\]</div>
+<p>The field has its amplitude <span class="math notranslate nohighlight">\({E_0}\)</span> and phase <span class="math notranslate nohighlight">\(\alpha\)</span>, which depend on antenna excitation. Free space wavenumber <span class="math notranslate nohighlight">\(\beta=\frac{2\pi}{\lambda}\)</span> is expressed in [rad/m].</p>
+<p>The simplest possible array is the one consisting of two antenna elements placed at some distance <em>d</em>. For convenience, we assume that the antennas are places along the <em>z</em> axis, symmetrically around <span class="math notranslate nohighlight">\(z=0\)</span>, as shown in Fig. 2. One of key assumptions of farfield observation is that we can observe the incoming electromagnetic wave as a plane wave. Analyzing for observation direction <span class="math notranslate nohighlight">\(\theta\)</span>, we find the total electric field to be a superposition of fields generated by the two antenna elements that make up the array.</p>
+<div class="figure" id="id2">
+<img alt="../_images/F2_ffield.svg" src="../_images/F2_ffield.svg" /><p class="caption"><span class="caption-text">Fig. 2. Farfield geometry for a two-element array</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>With these considerations and the geometry in Fig. 2, we can now present the resulting field of a two element array. If all elements are excited with currents of equal amplitudes <span class="math notranslate nohighlight">\(E_0\)</span>, but with a phase difference <span class="math notranslate nohighlight">\(\alpha\)</span> between the two elements, the field is expressed as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}=\mathbf{E}_\mathbf{1}+\mathbf{E}_\mathbf{2}=E_0\cdot\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot\left(e^{+j\beta\frac{d}{2}\cos{\theta}}e^{+j\alpha}+e^{-j\beta\frac{d}{2}\cos{\theta}}\right)\]</div>
+<p>The term in brackets on the right side containing two exponential functions is termed <strong>array factor</strong> and is crucial in defining the total array pattern. We can rewrite general relation for resulting field as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}_{total}\left(r,\theta,\varphi\right)=E_0\cdot\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot AF\left(\theta,\varphi\right)\]</div>
+<p>The total radiation pattern of an antenna array depends <strong>both</strong> on</p>
+<ul class="simple">
+<li>the radiation pattern of a constituent antenna element <span class="math notranslate nohighlight">\(\mathbf{F}\left(\theta,\varphi\right)\)</span>, and</li>
+<li>the array factor <span class="math notranslate nohighlight">\(AF\left(\theta,\varphi\right)\)</span>.</li>
+</ul>
+<p>The array factor itself is independent of the nature of the elements of the array. It only characterizes their geometrical relation in the array and the relation between their excitations. Therefore the point of interest in array design is how to geometrically distribute antennas in space and what kind of signal to bring to each antenna element. The design of the array factor provides large versatility of possible radiation patterns of the resulting array.</p>
+<div class="section" id="examples-of-two-element-arrays">
+<h3>Examples of Two-element Arrays<a class="headerlink" href="#examples-of-two-element-arrays" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Broadside array</dt>
+<dd></dd>
+</dl>
+<p>The simplest case of an array is the one in which two identical antennas have the same magnitude and phase of excitation, i.e. when <span class="math notranslate nohighlight">\(\alpha=0\)</span>. The resulting normalized field is then obtained as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}=\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot2\cdot \cos{\left(\frac{\beta d}{2}\cos{\theta}\right)}\]</div>
+<p>In particular, if we put <span class="math notranslate nohighlight">\(d=\lambda/2\)</span> (case of particular interest), we get</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}=\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot2\cdot      \cos{\left(\frac{\pi}{2}\cos{\theta}\right)}\]</div>
+<p>What can be concluded from this formula?
+- Maximum radiation occurs is in direction <span class="math notranslate nohighlight">\(\theta=90^{\circ}\)</span>. Such array is called <strong>broadside array</strong>. In addition, for <span class="math notranslate nohighlight">\(d=\lambda/2\)</span> zeros in radiation pattern occur at directions <span class="math notranslate nohighlight">\(\theta=0^{\circ}\)</span> and <span class="math notranslate nohighlight">\(\theta=180^{\circ}\)</span>.
+- By having two identical sources in space, we modify the radiation pattern of a single antenna.</p>
+<div class="figure" id="id3">
+<img alt="../_images/F3_broadside.svg" src="../_images/F3_broadside.svg" /><p class="caption"><span class="caption-text">Fig. 3. Broadside pattern of a two-element array with <span class="math notranslate nohighlight">\(d=\lambda/2\)</span>. Elements are assumed isotropic.</span></p>
+<div class="legend">
+</div>
+</div>
+<dl class="docutils">
+<dt>End-fire array</dt>
+<dd></dd>
+</dl>
+<p>We now consider what happens when we excite one of the antenna elements counterphase to the other. Magnitude of excitations remains equal. The resulting field is</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}=\mathbf{E}_\mathbf{1}+\mathbf{E}_\mathbf{2}=\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot\left(e^{-j\beta\frac{d}{2}\cos{\theta}}e^{j\pi}+e^{+j\beta\frac{d}{2}\cos{\theta}}\right)\]</div>
+<p>which can be written as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{E}=\mathbf{E}_\mathbf{1}+\mathbf{E}_\mathbf{2}=\frac{e^{-j\beta r}}{r}\cdot\mathbf{F}\left(\theta,\varphi\right)\cdot2j\cdot \sin{\left(\frac{\beta d}{2}\cos{\theta}\right)}\]</div>
+<p>Direction of maximum radiation is <span class="math notranslate nohighlight">\(\theta=0^{\circ}\)</span>. Such array is called <strong>end-fire array</strong>. In addition, if we assume that <span class="math notranslate nohighlight">\(d=\lambda/2\)</span> zeros in the radiation pattern are observed for direction <span class="math notranslate nohighlight">\(\theta=90^{\circ}\)</span>.</p>
+<div class="figure" id="id4">
+<img alt="../_images/F4_endfire.svg" src="../_images/F4_endfire.svg" /><p class="caption"><span class="caption-text">Fig. 4. End-fire pattern of a two-element array with <span class="math notranslate nohighlight">\(d=\lambda/2\)</span>. Elements are assumed isotropic.</span></p>
+<div class="legend">
+</div>
+</div>
+<dl class="docutils">
+<dt>General two-element array with uniform magnitude</dt>
+<dd></dd>
+</dl>
+<p>For an arbitrary phase shift between the excitations of two antenna elements <span class="math notranslate nohighlight">\(\alpha\)</span>, array factor is determined as</p>
+<div class="math notranslate nohighlight">
+\[AF\left(\theta,\varphi\right)=AF\left(\theta\right){=e}^{+j\beta\frac{d}{2}\cos{\theta}}e^{j\alpha}+e^{-j\beta\frac{d}{2}\cos{\theta}}\]</div>
+<p>Radiation maximum in the direction for which the interference of fields generated by two antenna elements is constructive, i.e. when the two exponentials in array factor are equal. The condition turns to be</p>
+<div class="math notranslate nohighlight">
+\[\alpha=-\beta d\cos{\theta}+2n\pi\]</div>
+<p>On the other hand, zeros in the radiation pattern occur in the direction for which the interference of the fields is destructive, i.e. when the array factor is zero.</p>
+<div class="math notranslate nohighlight">
+\[\beta d\cos{\theta}=\pi-\alpha+2n\pi\]</div>
+<p>For a given array, we can modify the direction <span class="math notranslate nohighlight">\(\theta\)</span> of maximum and minimum by merely changing the excitation phase <span class="math notranslate nohighlight">\(\alpha\)</span>. This can be done electronically, using a variable phase shifter. This is the basic principle of beamforming, and shows the main advantage of arranging antennas into arrays. An additional degree of freedom is enabled when we allow the magnitude of excitation to change between elements as well.</p>
+</div>
+</div>
+<div class="section" id="linear-arrays">
+<h2>Linear Arrays<a class="headerlink" href="#linear-arrays" title="Permalink to this headline">¶</a></h2>
+<p>Considerations made for two-element arrays can now be extended to linear arrays with <em>N</em> elements. In all analyses that we present here, we will assume that all antenna elements are uniformly spaced spaced at some distance <em>d</em>. This is the most common approach in array design. We also assume that the linear array is oriented in <em>z</em> direction. Each antenna element <em>n</em> is excited with current magnitude <span class="math notranslate nohighlight">\(I_n\)</span> and phase <span class="math notranslate nohighlight">\(\alpha_n\)</span>. For such an array, array factor is expressed as</p>
+<div class="math notranslate nohighlight">
+\[AF\left(\theta\right)=\sum_{n=0}^{N-1}I_n\cdot e^{j\alpha_{n}} e^{j\beta_{z} z_{n}}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\beta_z=\beta \cos{\theta}=\frac{2\pi}{\lambda}\cos{\theta}\)</span> is the wavenumber in <em>z</em> direction (acting as a spatial frequency) while <span class="math notranslate nohighlight">\(z_n=n\cdot d\)</span> are the relative coordinates of <em>n</em>-th element. For linear array the array factor is dependent on only one spatial angle determined by array axis (<span class="math notranslate nohighlight">\(\theta\)</span>), so with linear arrays we can in general modify the element radiation pattern only in one principal plane.</p>
+<p>Of particular interest are arrays excited with equal magnitudes <span class="math notranslate nohighlight">\(I_0\)</span> and phases that progress linearly across the array as <span class="math notranslate nohighlight">\(\alpha_n=n \cdot d \cdot \alpha\)</span>. The array factor is then obtained as geometric series</p>
+<div class="math notranslate nohighlight">
+\[AF\left(\theta\right)=I_0\sum_{n=0}^{N-1}  e^{j n \left (\beta_{z}+\alpha \right )\cdot d }=I_0\sum_{n=0}^{N-1}  e^{j n \psi}\]</div>
+<p>i.e.</p>
+<div class="math notranslate nohighlight">
+\[AF\left(\psi\right)=I_0 e^{j \frac{\left ( N-1 \right )\cdot \psi}{2}} \cdot \frac{\sin \left ( \frac{N\psi }{2} \right )}{\sin \left ( \frac{\psi }{2} \right )}\]</div>
+<p>Note that linear rate of phase change <span class="math notranslate nohighlight">\(\alpha\)</span> only changes the direction of maximum. A radiation maximum is observed for direction <span class="math notranslate nohighlight">\(\psi =0\)</span>. In that case, <span class="math notranslate nohighlight">\(AF\left(\psi=0\right)=N\cdot I_0\)</span>. In other words, maximum radiating field intensity in that direction is increased <em>N</em> times compared to having a single antenna. The main beam is sharper in shape, and directivity is increased.</p>
+<div class="section" id="designing-linear-arrays">
+<h3>Designing Linear Arrays<a class="headerlink" href="#designing-linear-arrays" title="Permalink to this headline">¶</a></h3>
+<p>To construct an antenna array, given the desired direction of main beam (i.e. array factor), one starts by analyzing the equivalent line current distribution that gives rise to the radiation pattern. The array represents the discretization of that current distribution. We can assume that such current distribution is placed along the <em>z</em> axis, and that its length is <em>L</em>. The far-field radiation pattern from this current is then given as a <em>radiation integral</em></p>
+<div class="math notranslate nohighlight">
+\[F \left(\beta_z\right)= \int_{-\infty}^{\infty} {I\left(z \right)e^{j\beta_z } dz}\]</div>
+<p>Analogously, current distribution can be found as</p>
+<div class="math notranslate nohighlight">
+\[I\left(z\right)=\frac{1}{2\pi}\cdot\int_{-\infty}^{\infty}F \left (\beta_z \right )e^{-j\beta_z z}d\beta_{z}\]</div>
+<p>Note that the current distribution <span class="math notranslate nohighlight">\(I \left( z \right)\)</span> and its far-field radiation pattern (“space factor”) <span class="math notranslate nohighlight">\(F \left(\beta_z\right)\)</span> are related via Fourier transformation. The spectral variable <span class="math notranslate nohighlight">\(\beta_z\)</span> is furthermore directly mapped to angle <span class="math notranslate nohighlight">\(\theta\)</span> which represents the observed direction in far field via relation <span class="math notranslate nohighlight">\(\beta_z=\beta \cdot \cos \left( \theta \right)\)</span>. These properties are the basis of array design.</p>
+<dl class="docutils">
+<dt>Uniform Current Distribution</dt>
+<dd></dd>
+</dl>
+<p>If the amplitude and phase of current <span class="math notranslate nohighlight">\(I \left( z \right)\)</span> are both constant along line, then the radiation pattern is of the form of the <em>sinc</em> function (i.e <span class="math notranslate nohighlight">\(\frac{sin x}{x}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[F \left(\beta_z\right)= I_{0}\int_{-L/2}^{L/2}  e^{j\beta_z z}dz\ = I_{0} L\cdot  \frac{\sin \left ( \frac{\beta_z L }{2} \right )}{\frac{\beta_z L }{2} }\]</div>
+<p>The radiation maximum (main beam) now occurs for <span class="math notranslate nohighlight">\(\beta_z=0\)</span>, which corresponds to the broadside direction <span class="math notranslate nohighlight">\(\theta=90^{\circ}\)</span>. Zeros in the radiation pattern occur where for some integer <em>n</em> the spectral variable <span class="math notranslate nohighlight">\(\beta_z\)</span> equals <span class="math notranslate nohighlight">\(\frac{n\cdot 2 \pi}{L}\)</span>, i.e. at angles for which <span class="math notranslate nohighlight">\(\cos \theta = n\cdot  \frac{\lambda }{L}\)</span>. Therefore the length of the line current <em>L</em> determines the width of the beam.</p>
+<p>Here we can note that:</p>
+<ol class="arabic simple">
+<li>In digital signal processing the analog to a uniform line source in space would be rectangular pulse (or window) of duration <em>T</em>. The radiation pattern in this case could correspond to a frequency response of a digital low-pass filter.</li>
+<li>To alter the beam shape and sidelobe level one can additionally modify the current distribution by means of various windowing functions available in digital filter design.</li>
+<li>Although <span class="math notranslate nohighlight">\(F \left(\beta_z\right)\)</span> extends to infinity in mathematical terms, radiation pattern is relevant only for <span class="math notranslate nohighlight">\(\theta \in \left [ 0,\pi  \right ]\)</span>. This corresponds to the demand that <span class="math notranslate nohighlight">\(\beta_z\)</span> extends from <span class="math notranslate nohighlight">\(-\beta\)</span> to <span class="math notranslate nohighlight">\(\beta\)</span>. This region is called <strong>visible region</strong>. As we are interested in <span class="math notranslate nohighlight">\(F \left(\beta_z\right)\)</span> only in visible region, in array design we have some freedom to modify this function in its invisible region to achieve physical realizability.</li>
+</ol>
+<dl class="docutils">
+<dt>Linear Phase Progression</dt>
+<dd></dd>
+</dl>
+<p>Now we assume that the equivalent line current <span class="math notranslate nohighlight">\(I \left( z \right)\)</span> is of the form:</p>
+<div class="math notranslate nohighlight">
+\[I \left( z \right)=I_{0}\cdot{e}^{j\alpha z}\]</div>
+<p>This means that the magnitude of the current distribution remains constant, but the phase progresses linearly with rate <span class="math notranslate nohighlight">\(\alpha\)</span> across the length of the line. The radiation pattern is then proportional to</p>
+<div class="math notranslate nohighlight">
+\[F \left(\beta_z\right)= \int_{-\infty}^{\infty} {I_{0}e^{j\alpha z}\cdot e^{j\beta_z z}dz}=F \left(\beta_z + \alpha\right)\]</div>
+<p>This leads to a shift of the main beam to some angle <span class="math notranslate nohighlight">\(\theta_{0}=\arccos \left ( \frac{\alpha}{\beta  } \right )\)</span>. The added phase shift needs to ensure that <span class="math notranslate nohighlight">\(\theta_{0}\)</span> is between <span class="math notranslate nohighlight">\(-\pi\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span>. This procedure is called <strong>beam steering</strong>, and represents the basis for beamforming.</p>
+<div class="figure" id="id5">
+<img alt="../_images/F4a_shift_pattern.svg" src="../_images/F4a_shift_pattern.svg" /><p class="caption"><span class="caption-text">Fig. 5. Broadside radiation pattern and shifted radiation pattern due to linear excitation phase <span class="math notranslate nohighlight">\(\alpha\)</span></span></p>
+<div class="legend">
+</div>
+</div>
+<div class="section" id="discretization">
+<h4>Discretization<a class="headerlink" href="#discretization" title="Permalink to this headline">¶</a></h4>
+<p>The line current distribution we’ve analyzed so far is continuous. To build an antenna array with such current distribution, we must discretize it at points where we plan to place antenna elements. We sample the line current <span class="math notranslate nohighlight">\(I \left( z \right)\)</span> at distances <span class="math notranslate nohighlight">\(n \cdot d\)</span>, which corresponds to antenna element position within the total array length <em>L</em>. For discretization we use the <em>comb</em> function (Fig. 6), which is a train of Dirac impulses.</p>
+<div class="math notranslate nohighlight">
+\[comb\left(z\right)=\sum_{n=-\infty}^{\infty}\delta\left(z-n\cdot d\right)\]</div>
+<p>This function has a Fourier transform which is another (reciprocal) comb function with spacing between elements <span class="math notranslate nohighlight">\(2\pi /d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[comb\left(\beta_z\right)=\frac{1}{d}\sum_{n=-\infty}^{\infty}\delta\left(\beta_z-\frac{2\pi n}{d}\right)\]</div>
+<div class="figure" id="id6">
+<img alt="../_images/F5_shah.svg" src="../_images/F5_shah.svg" /><p class="caption"><span class="caption-text">Fig. 6. Comb function</span></p>
+<div class="legend">
+</div>
+</div>
+<p>The discretized current is obtained by taking the values of the continuous current at each distance <em>d</em>.</p>
+<div class="math notranslate nohighlight">
+\[I\left(z\right)=\sum_{n=-\infty}^{\infty}{I_n\left(z\right)\delta\left(z-nd\right)}\]</div>
+<p>Multiplication with comb function in spatial domain translates to a convolution of current spectrum with the reciprocal comb function in spectral domain:</p>
+<div class="math notranslate nohighlight">
+\[F\left(\beta_z\right)=F\left(\beta_z\right)\ast\frac{1}{d}\sum_{n=-\infty}^{\infty}\delta\left(\beta_z-\frac{2\pi n}{d}\right)=\frac{1}{d}\sum_{n=-\infty}^{\infty}F\left(\beta_z-\frac{2\pi n}{d}\right)\]</div>
+<p>For rectangular uniform current distribution discretized with <em>N</em> intervals at a distance <em>d</em>, this convolution becomes the <em>array factor</em> expressed as dependency on <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[AF\left ( \theta  \right )=F\left ( \beta_z \right )  =I_0 \cdot N \cdot \frac{\sin \left ( \frac{N \cdot \beta_z\cdot d }{2} \right )}{N \cdot\sin \left ( \frac{\beta_z\cdot d }{2} \right )}\]</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>The used convention in discretization</strong></p>
+<p class="last">The element with index 0 is chosen to be placed at position <span class="math notranslate nohighlight">\(z=-L/2+d/2\)</span>, while the element with index (<em>N</em>-1) is placed at <span class="math notranslate nohighlight">\(z=L/2-d/2\)</span> for convenience (Figs 7 and 8). That way number of samples <em>N</em> is equal to number of sampling intervals, and the total line current length <em>L</em> is equal to <span class="math notranslate nohighlight">\(N\cdot d\)</span>.</p>
+</div>
+<p>If we wish to steer the beam to some direction other than broadside we introduce linear phase shift to <em>n</em>-th element as <span class="math notranslate nohighlight">\(\alpha_n=n \cdot d \cdot \alpha\)</span>. Then we can also introduce auxiliary variable <span class="math notranslate nohighlight">\(\psi=\left(\beta_z+\alpha\right )\cdot d\)</span>. With that the above expression basically becomes the same one as already derived intuitively when linear arrays were first introduced.</p>
+<p>The array factor can also be obtained via discrete Fourier transform from the (known) magnitudes and phases of current samples <span class="math notranslate nohighlight">\(i_n\)</span> at the antenna elements:</p>
+<div class="math notranslate nohighlight">
+\[AF\left ( \theta  \right ) =  \sum_{n=0}^{N-1} i_n \cdot e^{j \beta_{z}\cdot  nd}\]</div>
+<p>The discretization process is described qualitatively in Figures 7 and 8. Note that the spectrum of the array factor is periodic with a period proportional to 1/<em>d</em>. Additional main lobes appearing in spectral domain are also termed <strong>grating lobes</strong>.</p>
+<p>As in digital signal processing, aliasing can occur if the array elements are too distant, which is analogous to the sampling frequency being too low. Aliasing manifests itself in radiation pattern as possible appearance of grating lobes within the visible region and occurs when <span class="math notranslate nohighlight">\(d&gt; \frac{\lambda }{2}\)</span>. In array design aliasing however does not always mean to be a bad thing as in signal processing, since grating lobes may be sometimes desired (e.g. in interferometers). Here we however consider cases with no aliasing, for simplicity and compatibility with DSP. When no aliasing occurs, in visible region the array factor corresponds to the one obtained for equivalent line current.</p>
+<div class="figure" id="id7">
+<img alt="../_images/F6_Continuous.svg" src="../_images/F6_Continuous.svg" /><p class="caption"><span class="caption-text">Fig. 7. Continuous current line source and spectrum</span></p>
+<div class="legend">
+</div>
+</div>
+<div class="figure" id="id8">
+<img alt="../_images/F7_Discretized.svg" src="../_images/F7_Discretized.svg" /><p class="caption"><span class="caption-text">Fig. 8. Discretized current line source and spectrum</span></p>
+<div class="legend">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="planar-arrays">
+<h2>Planar Arrays<a class="headerlink" href="#planar-arrays" title="Permalink to this headline">¶</a></h2>
+<p>Linear arrays with uniform element spacing are rather straightforward to analyze and design since they rely on Fourier transform relationship between current distribution (space domain) and array factor (spectral domain), which opens the door for direct use of various digital signal processing techniques through analogies with Fourier transform relations between time and frequency domains. Nevertheless, they have the property of beam steering in only one principal plane; the one defined by array axis, which we assumed above to be <em>z</em>. In the orthogonal planes radiation pattern remains identical to that of a single antenna element.</p>
+<p>When 3D beam coverage is required antenna elements need to be distributed in two dimensions, i.e. on a plane. The simplest 2D array geometry is a planar array with rectangular grid. It can be considered as a (linear) array of linear arrays, and its array factor is the product of two linear array factors. The design procedure of such an array boils down to design of two linear arrays in two planes.</p>
+<p>The design of planar arrays can also be considered as a discretization of some 2D excitation distribution in a similar way linear arrays are considered as a discretization of line source. Here we take a look at basic properties of 2D array and address its geometry and design aspects.</p>
+<p>We will assume that the planar array extends in <em>xy</em> plane. The starting relation is now a 2D Fourier transform relating excitation distribution <span class="math notranslate nohighlight">\(I\left(x,y \right)\)</span> and space factor <span class="math notranslate nohighlight">\(F \left(\beta_x,\beta_y\right)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[F \left(\beta_x,\beta_y\right)= \int_{-\infty }^{-\infty}\int_{-\infty }^{-\infty} {I\left(x,y \right)e^{j\beta_x x + j\beta_y y} dxdy}\]</div>
+<p>If we assume that the analyzed surface is rectangular with dimensions <span class="math notranslate nohighlight">\(L_x \times L_y\)</span> the Fourier transform boils down to the product of two Fourier transforms in <em>x</em> and <em>y</em> directions.</p>
+<div class="math notranslate nohighlight">
+\[F \left(\beta_x,\beta_y\right)= F_x \left(\beta_x\right)\cdot  F_y \left(\beta_y\right) = \int_{-L_{x}/2 }^{L_{x}/2} {I\left(x \right)e^{j\beta_x x } dx} \cdot \int_{-L_{y}/2 }^{L_{y}/2} {I\left(y \right)e^{j\beta_y y } dy}\]</div>
+<p>We can apply the same reasoning as in the one-dimensional case and observe the planar array as two linear arrays in <em>x</em> and <em>y</em> directions. Spectral variables <span class="math notranslate nohighlight">\(\beta_x\)</span> and <span class="math notranslate nohighlight">\(\beta_y\)</span> are now projections of a planar wave in some direction <strong>r</strong> onto <em>x</em> and <em>y</em> axes respectively, and are given as</p>
+<div class="math notranslate nohighlight">
+\[\beta_x=\beta \sin{\theta} \cos{\phi}=\frac{2\pi}{\lambda}\sin{\theta} \cos{\phi}\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_y=\beta \sin{\theta} \sin{\phi}=\frac{2\pi}{\lambda}\sin{\theta} \sin{\phi}\]</div>
+<p>Discretization of the planar surface is done using <em>M</em> elements in <em>x</em> direction and <em>N</em> elements in <em>y</em> direction. The total array factor across the farfield sphere <span class="math notranslate nohighlight">\(AF\left ( \theta ,\varphi  \right )\)</span> is then the product of two array factors obtained using spectral variables <span class="math notranslate nohighlight">\(\beta_x\)</span> and <span class="math notranslate nohighlight">\(\beta_y\)</span>. In two principal orthogonal planes <span class="math notranslate nohighlight">\(y=0\)</span> and <span class="math notranslate nohighlight">\(x=0\)</span> (i.e. <span class="math notranslate nohighlight">\(\phi=0^{\circ }\)</span> and <span class="math notranslate nohighlight">\(\phi=90^{\circ}\)</span>) array factors correspond to equivalent line sources in <em>x</em> and <em>y</em> directions. Thus they can be evaluated independently using procedures for linear arrays. In all other planes the product of two patterns is used. The resulting beam possesses 3D capabilities as it extends across both <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> angles on the farfield sphere. The visible region in spectral domain becomes a unit circle</p>
+<div class="math notranslate nohighlight">
+\[\beta_x^{2}+\beta_y^{2}=\sin ^{2}\left ( \theta \right )\cdot 1\leq 1\]</div>
+<p>The relevant geometry of planar arrays is provided in Figs 9 and 10 as follows:</p>
+<div class="figure" id="id9">
+<img alt="../_images/F8_planar3D.svg" src="../_images/F8_planar3D.svg" /><p class="caption"><span class="caption-text">Fig. 9. Planar array in <em>xy</em> plane. 3D view.</span></p>
+<div class="legend">
+</div>
+</div>
+<div class="figure" id="id10">
+<img alt="../_images/F9_planar2D.svg" src="../_images/F9_planar2D.svg" /><p class="caption"><span class="caption-text">Fig. 10. Planar array in <em>xy</em> plane. 2D view.</span></p>
+<div class="legend">
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Some analogies between digital signal processing and array design are provided in table below.</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Signal processing</th>
+<th class="head">Antenna array processing</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Time coordinate … <em>t</em></td>
+<td>Space coordinate … <em>z</em></td>
+</tr>
+<tr class="row-odd"><td>Frequency … <span class="math notranslate nohighlight">\(\omega\)</span></td>
+<td>Wavenumber … <span class="math notranslate nohighlight">\(\beta_z\)</span></td>
+</tr>
+<tr class="row-even"><td>Sinusoid … <span class="math notranslate nohighlight">\(e^{j \omega t}\)</span></td>
+<td>Plane wave … <span class="math notranslate nohighlight">\(e^{-j \beta_z z}\)</span></td>
+</tr>
+<tr class="row-odd"><td>Sampling … <span class="math notranslate nohighlight">\(T_{s}\leq \frac{1}{2f_{max}}\)</span></td>
+<td>Sampling … <span class="math notranslate nohighlight">\(d\leq \frac{\lambda}{2}\)</span></td>
+</tr>
+<tr class="row-even"><td>Mixing/modulation… <span class="math notranslate nohighlight">\(F(\omega -\omega _{0})\)</span></td>
+<td>Beam steering … <span class="math notranslate nohighlight">\(F(\beta_z -\alpha)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#antennas-example"><span class="std std-ref">From Antennas to Arrays</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ofdm.html" class="btn btn-neutral float-right" title="OFDM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="antennas_basic.html" class="btn btn-neutral float-left" title="Basics of Antennas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

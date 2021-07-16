@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Frequency Translations &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modulations" href="modulations.html" />
+    <link rel="prev" title="Multirate Signal Processing" href="multirate.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Frequency Translations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rf-if-local-oscillator-analog-domain">RF/IF Local Oscillator (Analog Domain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numerically-controlled-oscillator-digital-domain">Numerically Controlled Oscillator (Digital Domain)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Frequency Translations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/mixing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="frequency-translations">
+<h1>Frequency Translations<a class="headerlink" href="#frequency-translations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rf-if-local-oscillator-analog-domain">
+<h2>RF/IF Local Oscillator (Analog Domain)<a class="headerlink" href="#rf-if-local-oscillator-analog-domain" title="Permalink to this headline">¶</a></h2>
+<p>Radio-frequency (RF) or intermediate frequency (IF) local oscillator (mixer) is an active or passive analog device that converts a signal from one frequency to another. It can do frequency upconversion or downconversion of the input signal. A frequency mixer is a 3-port electronic circuit.
+Two of the ports are “input” ports and the remaining port is an “output” port. These three ports are the radio frequency (RF) input, the local oscillator (LO) input (reference signal), and the intermediate frequency (IF) output.</p>
+<p>The ideal mixer “mixes” the two input signals such that the output signal frequency is either
+the sum (or difference) frequency of the inputs, depending on if a signal is being up or downconverted.</p>
+<div class="math notranslate nohighlight">
+\[f_{OUT} = f_{RF} \pm f_{LO}\]</div>
+<p>Fundamentally, “mixing” of two input signals is done by their multiplication. From implementation perspective, multiplication of two signals is non-linear operation, and RF mixers cannot be realized by linear-time-invariant (LTI) components or circuits. Instead, the translation is achieved by either time varying or non-linear circuits, e.g., diodes.</p>
+<p>But, let’s keep on fundamentals and demonstrate “mixing” as simple math and some spectrum images. Assume we have input cosine signal with frequency <span class="math notranslate nohighlight">\(\omega_{IN}\)</span> and LO cosine signal with frequency <span class="math notranslate nohighlight">\(\omega_{LO}\)</span></p>
+<div class="figure" id="id1">
+<img alt="../_images/mixer.png" src="../_images/mixer.png" />
+<p class="caption"><span class="caption-text">Fig. 1. A block representation of a mixer</span></p>
+</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}x_{IN}(t) = cos(\omega_{IN} t)\\x_{LO}(t) = cos(\omega_{LO} t)\end{aligned}\end{align} \]</div>
+<p>Both input signals can be shown in frequency domain as</p>
+<div class="figure" id="id2">
+<img alt="../_images/spectrum1.png" src="../_images/spectrum1.png" />
+<p class="caption"><span class="caption-text">Fig. 2. Original spectra of the two signals.</span></p>
+</div>
+<p>If we do multiplication of the input signals</p>
+<div class="math notranslate nohighlight">
+\[y(t) = x_{LO}(t) x_{IN}(t)\]</div>
+<p>and apply <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_trigonometric_identities">product-to-sum identity</a> for trigonometric functions, we obtain output signal and its spectrum</p>
+<div class="math notranslate nohighlight">
+\[y(t) = \frac{1}{2} cos((\omega_{LO}  - \omega_{IN})t) + \frac{1}{2} cos((\omega_{LO}  + \omega_{IN})t)\]</div>
+<div class="figure" id="id3">
+<img alt="../_images/spectrum2.png" src="../_images/spectrum2.png" />
+<p class="caption"><span class="caption-text">Fig. 3. Spectra after multiplication.</span></p>
+</div>
+<p>These two signal components are called the upper and lower sideband. Filtering out one of them, let’s say the lower sideband, we get the signal transposed in frequency. And that’s our final upconverted signal! Similar story you can do for downconversion, you can try it yourself :)</p>
+<div class="math notranslate nohighlight">
+\[y_{trans}(t) = \frac{1}{2} {cos((\omega_{LO}  + \omega_{IN})t)}\]</div>
+<div class="figure" id="id4">
+<img alt="../_images/spectrum3.png" src="../_images/spectrum3.png" />
+<p class="caption"><span class="caption-text">Fig. 4. Filtering the spectrum.</span></p>
+</div>
+</div>
+<div class="section" id="numerically-controlled-oscillator-digital-domain">
+<h2>Numerically Controlled Oscillator (Digital Domain)<a class="headerlink" href="#numerically-controlled-oscillator-digital-domain" title="Permalink to this headline">¶</a></h2>
+<p>Numerically controlled oscillator (NCO) is component in digital domain that implements frequency downconversion and upconversion on discrete signals. The basic idea is quite simple, assume that we have analog signal for mixing</p>
+<div class="math notranslate nohighlight">
+\[x(t) = A cos(\omega_0 t)\]</div>
+<p>If this signal is sampled with frequency <span class="math notranslate nohighlight">\(f_{s}=1/T_{s}\)</span>, we get discrete time slots with corresponding oscillator values</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}t=n T_s=n\frac{1}{f_s}=n\frac{2 \pi}{\omega_s}, n=0,1,2,...\\x[n] = A cos(\omega_0 n T_s) = A cos(2\pi\frac{\omega_0}{\omega_s}n) = A cos(2\pi\frac{f_0}{f_s}n)\end{aligned}\end{align} \]</div>
+<p>Discrete values of signal <span class="math notranslate nohighlight">\(x[n]\)</span> represent output samples of numerically controlled oscillator. Notice that in this case, we are limited with value for frequency translation <span class="math notranslate nohighlight">\(f_0\)</span>, due to Nyquist-Shannon theorem, in the range <span class="math notranslate nohighlight">\([-f_{s}/2,f_{s}/2]\)</span>. Try to pick for example frequency translation value <span class="math notranslate nohighlight">\(f_0=f_s\)</span>. What is the shape of signal <span class="math notranslate nohighlight">\(x[n]\)</span> in that case?
+Furthermore, in practical cases there is also need to do “complex mixing” of the digital signal. In that case, mixer signal has the form</p>
+<div class="math notranslate nohighlight">
+\[x[n] = A {cos(2\pi\frac{f_0}{f_s}n) + j sin(2\pi\frac{f_0}{f_s}n)} = A e^{j 2\pi\frac{f_0}{f_s}n}\]</div>
+<div class="section" id="related-assignments">
+<h3>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h3>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#mixing-example"><span class="std std-ref">Real and complex mixing</span></a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modulations.html" class="btn btn-neutral float-right" title="Modulations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="multirate.html" class="btn btn-neutral float-left" title="Multirate Signal Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

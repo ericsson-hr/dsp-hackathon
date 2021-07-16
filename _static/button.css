@@ -1,0 +1,24 @@
+.button {
+	box-shadow: 0px 0px 0px 2px #9fb4f2;
+	background-color:transparent;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#4e6096;
+	font-family:"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+	font-size:16px;
+	padding:12px 27px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.button:hover {
+	background-color:transparent;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+.button:visited {
+	color:#4e6096;
+}

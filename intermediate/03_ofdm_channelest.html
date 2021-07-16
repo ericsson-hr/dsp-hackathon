@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OFDM demodulator with communication channel effects &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AM demodulation using DSP" href="04_am_demodulation.html" />
+    <link rel="prev" title="4-QAM receiver" href="02_qam_receiver.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">Basic Level</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Intermediate Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_audio_filtering.html">Irritating sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_qam_receiver.html">4-QAM receiver</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OFDM demodulator with communication channel effects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-files">Input Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-files">Output Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-and-grading">Evaluation and Grading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_am_demodulation.html">AM demodulation using DSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_beamforming.html">Designing Antenna Arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Intermediate Level</a> &raquo;</li>
+        
+      <li>OFDM demodulator with communication channel effects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/intermediate/03_ofdm_channelest.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ofdm-demodulator-with-communication-channel-effects">
+<h1>OFDM demodulator with communication channel effects<a class="headerlink" href="#ofdm-demodulator-with-communication-channel-effects" title="Permalink to this headline">¶</a></h1>
+<p><strong>Assignment 03</strong></p>
+<p>OFDM symbol is transmitted through a communication channel of unknown characteristics, the same way as was done in the <em>OFDM signal generator</em> Basic Level example. Input files contain time-domain I/Q samples of the received signal in floating-point format. Your task is to decode the received information.</p>
+<p>The obtained bitstream represents ASCII-coded characters (8 bits per character), each character stored with its most significant bit (MSB) first. As an output, your solution must generate a file <em>receivedMessage.txt</em> with the decoded text message.</p>
+<div class="section" id="input-files">
+<h2>Input Files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h2>
+<p>Source files in <a class="reference download internal" download="" href="../_downloads/e46a771568c0d7379181f7e91f724921/03_ofdm_channelest.zip"><code class="xref download docutils literal notranslate"><span class="pre">03_ofdm_channelest.zip</span></code></a></p>
+<dl class="docutils">
+<dt>I_samples.csv</dt>
+<dd>Contains in-phase samples in floating point format (%1.6f).</dd>
+<dt>Q_samples.csv</dt>
+<dd>Contains quadrature-phase samples in floating point format (%1.6f).</dd>
+</dl>
+</div>
+<div class="section" id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>receivedMessage.txt</dt>
+<dd>The decoded message.</dd>
+</dl>
+<p>Your solution as a MATLAB or Python script.</p>
+</div>
+<div class="section" id="evaluation-and-grading">
+<h2>Evaluation and Grading<a class="headerlink" href="#evaluation-and-grading" title="Permalink to this headline">¶</a></h2>
+<p>The received text message must be identical to the one constructed on the transmitting end.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04_am_demodulation.html" class="btn btn-neutral float-right" title="AM demodulation using DSP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02_qam_receiver.html" class="btn btn-neutral float-left" title="4-QAM receiver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

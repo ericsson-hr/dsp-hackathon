@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Modulations &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basics of Antennas" href="antennas_basic.html" />
+    <link rel="prev" title="Frequency Translations" href="mixing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modulations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discrete-modulations">Discrete Modulations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quadrature-amplitude-modulation-qam">Quadrature Amplitude Modulation (QAM)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#error-vector-magnitude-evm">Error Vector Magnitude (EVM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intersymbol-interference-isi">Intersymbol Interference (ISI)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eye-diagram">Eye Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Modulations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/modulations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modulations">
+<h1>Modulations<a class="headerlink" href="#modulations" title="Permalink to this headline">¶</a></h1>
+<p>Modulation is the procedure of changing signal parameters to make it more suitable for transmission in communication systems.
+The information from <em>modulation signal</em> <span class="math notranslate nohighlight">\(\boldsymbol{u_m}\)</span> is being packed into <em>carrier signal</em> <span class="math notranslate nohighlight">\(\boldsymbol{u_c}\)</span>, thus changing it’s properties and obtaining the <em>modulated signal</em> <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>.
+Although the choice of signals can be arbitrary, most common choice for <em>carrier signal</em> is sinusoidal function <span class="math notranslate nohighlight">\(u_c = U_c cos(\omega_c t)\)</span>.
+Modulation causes the frequency translation of the modulation signal from baseband to the frequency band of the carrier signal.
+After the transfer over communication channel, information is unpacked at receiver side in the process called <em>demodulation</em>.
+By the property of carrier signal which is impacted by modulation, we differentiate these modulation types:</p>
+<dl class="docutils">
+<dt>Amplitude modulation:</dt>
+<dd><p class="first">Changing the amplitude of carrier signal around the mean value. Change is proportional to the modulation signal with proportionality constant called <em>modulation index</em> <span class="math notranslate nohighlight">\(K_a\)</span>.</p>
+<div class="last math notranslate nohighlight">
+\[u = (U_c + K u_m) cos(\omega_c t)\]</div>
+</dd>
+<dt>Phase modulation:</dt>
+<dd><p class="first">Varying the instantaneous phase of the carrier signal proportional to the modulation signal with proportionality constant <span class="math notranslate nohighlight">\(K_p\)</span></p>
+<div class="last math notranslate nohighlight">
+\[u = U_c cos(\omega_c t + K_p u_m)\]</div>
+</dd>
+<dt>Frequency modulation:</dt>
+<dd><p class="first">Varying the instantaneous frequency of the carrier signal proportional to the modulation signal with proportionality constant <span class="math notranslate nohighlight">\(K_\omega\)</span></p>
+<div class="last math notranslate nohighlight">
+\[u = U_c cos(\omega_c t + K_\omega \int_{0}^{t} u_m \,dt)\]</div>
+</dd>
+</dl>
+<div class="figure" id="id1">
+<img alt="../_images/AM.png" src="../_images/AM.png" />
+<p class="caption"><span class="caption-text">Fig. 1. Spectrum of an amplitude-modulated signal.</span></p>
+</div>
+<div class="section" id="discrete-modulations">
+<h2>Discrete Modulations<a class="headerlink" href="#discrete-modulations" title="Permalink to this headline">¶</a></h2>
+<p>Modulating the sinusoidal carrier with discrete signals creates the <em>symbols</em> which represents some digital binary value. Symbols are parts of the sinusoidal signal which differ in amplitude, frequency or phase.
+In order to prevent interference of the symbols and prevent detection errors, they have be created from <em>orthogonal basis functions</em>.  Two functions <span class="math notranslate nohighlight">\(\phi_i\)</span> and  <span class="math notranslate nohighlight">\(\phi_j\)</span> are orthogonal if</p>
+<div class="math notranslate nohighlight">
+\[\int_{0}^{T_s} \phi_i(t) \phi_j(t) \,dt\]</div>
+<p>Equals <span class="math notranslate nohighlight">\(0\)</span> for <span class="math notranslate nohighlight">\(i \ne j\)</span>, and <span class="math notranslate nohighlight">\(1\)</span>, for <span class="math notranslate nohighlight">\(i = j\)</span>. Here <span class="math notranslate nohighlight">\(T_s\)</span> represents the duration of the symbol. Symbols are generated as <span class="math notranslate nohighlight">\(s = s(i) \phi_i + s(j) \phi_j\)</span>. Energy of the symbol is given as:</p>
+<div class="math notranslate nohighlight">
+\[E_s = \int_{0}^{T_s} s^2(t) \,dt\]</div>
+<p>Plot of the symbols <span class="math notranslate nohighlight">\(s\)</span> in <span class="math notranslate nohighlight">\(\phi_i, \phi_j\)</span> basis is called <em>constellation</em>.
+Each symbol <span class="math notranslate nohighlight">\(s\)</span> can represent one bit (then it is called binary modulation) or more bits. To simplify the expressions, we chose the values <span class="math notranslate nohighlight">\(T_s = E_s = 1\)</span>.</p>
+<dl class="docutils">
+<dt>Amplitude shift keying (ASK):</dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(\phi_1 = cos(2 \pi f t)\)</span></p>
+<p><strong>1:</strong> <span class="math notranslate nohighlight">\(s_1 = 1\cdot\phi_1 = cos(2 \pi f t)\)</span></p>
+<p class="last"><strong>0:</strong> <span class="math notranslate nohighlight">\(s_0 = 0\cdot\phi_1 = 0\)</span></p>
+</dd>
+<dt>Phase shift keying (PSK):</dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(\phi_1 = cos(2 \pi f t)\)</span></p>
+<p><strong>1:</strong> <span class="math notranslate nohighlight">\(s_1 = 1\cdot\phi_1  = cos(2 \pi f t)\)</span></p>
+<p class="last"><strong>0:</strong> <span class="math notranslate nohighlight">\(s_0 = -1\cdot\phi_1 = -cos(2 \pi f t)\)</span></p>
+</dd>
+<dt>Frequency shift keying (FSK):</dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(\phi_1 = cos(2 \pi f_1 t), \phi_2 = cos(2 \pi f_2 t)\)</span></p>
+<p><strong>1:</strong> <span class="math notranslate nohighlight">\(s_1 = 1\cdot\phi_1 + 0\cdot\phi_2 = cos(2 \pi f_1 t)\)</span></p>
+<p class="last"><strong>0:</strong> <span class="math notranslate nohighlight">\(s_0 = 0\cdot\phi_1 + 1\cdot\phi_2 = cos(2 \pi f_2 t)\)</span></p>
+</dd>
+</dl>
+<div class="figure" id="id2">
+<img alt="../_images/discrete_mods.png" src="../_images/discrete_mods.png" />
+<p class="caption"><span class="caption-text">Fig. 2. An example of binary discrete modulations.</span></p>
+</div>
+<div class="section" id="quadrature-amplitude-modulation-qam">
+<h3>Quadrature Amplitude Modulation (QAM)<a class="headerlink" href="#quadrature-amplitude-modulation-qam" title="Permalink to this headline">¶</a></h3>
+<p>Each symbol can represent multiple bits of code. To encode <span class="math notranslate nohighlight">\(b\)</span> bits, <span class="math notranslate nohighlight">\(2^b\)</span> symbols are needed to represent all possible code combinations.
+The most basic example of QAM modulation is QAM 4. It uses 2 bits to encode <span class="math notranslate nohighlight">\(2^2 = 4\)</span> symbols. Base functions of QAM 4 modulation are; <span class="math notranslate nohighlight">\(\phi_1 = cos(2 \pi f t), \phi_2 = sin(2 \pi f t)\)</span>.
+Modulated signal is obtained from base functions by using the expression <span class="math notranslate nohighlight">\(s_i = s_i(1)\cdot\phi_1 + s_i(2)\cdot\phi_2\)</span>. Here, <span class="math notranslate nohighlight">\(s_i(1)\)</span> represent the <em>in-phase</em> (I) component of the symbol, and <span class="math notranslate nohighlight">\(s_i(2)\)</span> represents the <em>quadrature</em> (Q) component.
+This expression can also be rewritten in a complex form; <span class="math notranslate nohighlight">\(s_i = Re[(s_i(1) +  j s_i(2))\cdot(\phi_1 + j \phi_2)]\)</span>.</p>
+<dl class="docutils">
+<dt><strong>00:</strong></dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(s_1(1) = 1, s_1(2) = 1\)</span></p>
+<p><span class="math notranslate nohighlight">\(s_1 = 1\cdot\phi_1 + 1\cdot\phi_2 = cos(2 \pi f t) + sin(2 \pi f t)\)</span></p>
+<p class="last"><span class="math notranslate nohighlight">\(s_1 = Re [(\boldsymbol{1+j}) e^{-j 2 \pi f t}] = \sqrt{2} cos(2 \pi f t + \frac{\pi}{4})\)</span></p>
+</dd>
+<dt><strong>01:</strong></dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(s_2(1) = -1, s_2(2) = 1\)</span></p>
+<p class="last"><span class="math notranslate nohighlight">\(s_2 = Re [(\boldsymbol{-1+j}) e^{-j 2 \pi f t}] = \sqrt{2} cos(2 \pi f t + \frac{3 \pi}{4})\)</span></p>
+</dd>
+<dt><strong>11:</strong></dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(s_3(1) = -1, s_3(2) = -1\)</span></p>
+<p class="last"><span class="math notranslate nohighlight">\(s_3 = Re [(\boldsymbol{-1-j}) e^{-j 2 \pi f t}] = \sqrt{2} cos(2 \pi f t + \frac{5 \pi}{4})\)</span></p>
+</dd>
+<dt><strong>10:</strong></dt>
+<dd><p class="first"><span class="math notranslate nohighlight">\(s_4(1) = 1, s_4(2) = -1\)</span></p>
+<p class="last"><span class="math notranslate nohighlight">\(s_4 = Re [(\boldsymbol{1-j}) e^{-j 2 \pi f t}] = \sqrt{2} cos(2 \pi f t + \frac{7 \pi}{4})\)</span></p>
+</dd>
+</dl>
+<div class="figure" id="id3">
+<img alt="../_images/qam_4.png" src="../_images/qam_4.png" />
+<p class="caption"><span class="caption-text">Fig. 3. 4-QAM constellation.</span></p>
+</div>
+<p>To perform demodulation, signal is <strong>translated</strong> in frequency and then filtered with <strong>low-pass</strong> filter; <span class="math notranslate nohighlight">\(s_r = LP[s \cdot e^{j 2 \pi f t}]\)</span>.
+Demodulated signal values at given time are then mapped to the constellation to obtain wanted symbols. Symbol value is decided as the closest in <em>mean square error</em> (MSE) sense; <span class="math notranslate nohighlight">\(min(\sqrt{(I_{sr}-I_m)^2 + (Q_{sr}-Q_m)^2}), m\in[1,M]\)</span>.
+Detection borders separate the areas where symbols have to fall in order to be detected correctly.  Each symbol represents a binary value which then becomes a part of the output bitstream.</p>
+<div class="figure" id="id4">
+<img alt="../_images/qam_16_32_64.png" src="../_images/qam_16_32_64.png" />
+<p class="caption"><span class="caption-text">Fig. 4. QAM modulation can be performed for a larger number of bits.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="error-vector-magnitude-evm">
+<h2>Error Vector Magnitude (EVM)<a class="headerlink" href="#error-vector-magnitude-evm" title="Permalink to this headline">¶</a></h2>
+<p>If the signal properties degrade too much and the symbol falls into the area with different code representation, there is a possibility of wrong detection. The probability of the detection error increases almost linearly with the number of code combinations.
+The most common measure of modulation accuracy is Error Vector Magnitude (EVM). It is defined as the ratio of error magnitude and the largest symbol magnitude. If the received symbol is <span class="math notranslate nohighlight">\(I_{sr} + jQ_{sr}\)</span> and ideal symbol is <span class="math notranslate nohighlight">\(I_{ideal} +jQ_{ideal}\)</span>, than the EVM is given as</p>
+<div class="math notranslate nohighlight">
+\[EVM = \frac{\sqrt{(I_{sr}-I_{ideal})^2 + (Q_{sr}-Q_{ideal})^2}} {\sqrt{I_{max}^2 + Q_{max}^2}}\]</div>
+<p>EVM is usually measured for each symbol, and then averaged over the specified information block. It is also often expressed in percentage (%) or decibels (dB). Maximum EVM is specified in the communication system requirements and depends on the used modulation. For example, IEEE requirement states that the maximum value of EVM for systems using QAM 4 is -13dB.</p>
+<div class="figure" id="id5">
+<img alt="../_images/noise_evm.png" src="../_images/noise_evm.png" />
+<p class="caption"><span class="caption-text">Fig. 5. Constellation of a 4-QAM signal with added white noise (left). EVM visualized (right).</span></p>
+</div>
+</div>
+<div class="section" id="intersymbol-interference-isi">
+<h2>Intersymbol Interference (ISI)<a class="headerlink" href="#intersymbol-interference-isi" title="Permalink to this headline">¶</a></h2>
+<p>The impact of transmission path on discrete modulated signal is represented as various signal distortions, such as noise and intersymbol interference (ISI). One of the main cause of ISI is propagating the signal from transmitter to the receiver in multiple paths. This happens due to reflection from objects over the transmission path and it is called <em>multipath propagation</em>.
+In the real case, the envelope of the discrete modulated signal is not a rectangular window, but rather a function with smoother transitions, like <em>sinc</em> function or <em>raised-cosine</em> pulse.
+Each given symbol has some non zero components in the area of neighboring symbols. But it is very important that the symbol amplitude always stays zero in the detection point of other symbols. As the signals are distorted, they become wider in time and start to overlap with each other causing ISI.</p>
+<div class="figure" id="id6">
+<img alt="../_images/pulse_symbols.png" src="../_images/pulse_symbols.png" />
+<p class="caption"><span class="caption-text">Fig. 6. Symbol envelopes in the ideal case without intersymbol interference.</span></p>
+</div>
+<div class="section" id="eye-diagram">
+<h3>Eye Diagram<a class="headerlink" href="#eye-diagram" title="Permalink to this headline">¶</a></h3>
+<p>The most intuitive way to observe noise and ISI is called the eye diagram. It is made by overlapping multiple symbol intervals on an oscilloscope. The eye diagram can indicate to the various deformations like clock dithering, noise, ISI and other non-linear effects.</p>
+<div class="figure" id="id7">
+<img alt="../_images/eye.png" src="../_images/eye.png" />
+<p class="caption"><span class="caption-text">Fig. 7. An ideal eye diagram (left) and an eye diagram when noise and ISI are present (right).</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#qam-example"><span class="std std-ref">4-QAM modulator</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="antennas_basic.html" class="btn btn-neutral float-right" title="Basics of Antennas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mixing.html" class="btn btn-neutral float-left" title="Frequency Translations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

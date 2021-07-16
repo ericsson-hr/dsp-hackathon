@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multirate Signal Processing &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequency Translations" href="mixing.html" />
+    <link rel="prev" title="Filtering in Digital Domain" href="filtering.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Multirate Signal Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downsampling">Downsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upsampling">Upsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Multirate Signal Processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/multirate.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multirate-signal-processing">
+<h1>Multirate Signal Processing<a class="headerlink" href="#multirate-signal-processing" title="Permalink to this headline">¶</a></h1>
+<p>In multirate digital signal processing the sampling rate of a signal is changed in order to increase the efficiency of various signal processing operations. Decimation, or
+down-sampling, reduces the sampling rate, whereas expansion, or up-sampling, followed by interpolation increases the sampling rate.</p>
+<p>In real-world applications, we often would like to lower the sampling rate because
+it reduces storage and computation requirements. In many cases we prefer a higher
+sampling rate because it preserves fidelity.</p>
+<div class="section" id="downsampling">
+<h2>Downsampling<a class="headerlink" href="#downsampling" title="Permalink to this headline">¶</a></h2>
+<p>The process of lowering the sampling rate is called decimation, which is achieved by ignoring all but every R-th sample. A decimated (downsampled) signal can be expressed in the time domain as:</p>
+<div class="math notranslate nohighlight">
+\[y[n] = x[nR], R = 1, 2, 3, ...\]</div>
+<p>where <span class="math notranslate nohighlight">\(x[n]\)</span> is the original signal, <span class="math notranslate nohighlight">\(y[n]\)</span> is the decimated signal, and <span class="math notranslate nohighlight">\(R\)</span> is the decimation factor. Thus the sampling rate of the decimated signal is <span class="math notranslate nohighlight">\(R\)</span> times lesser than the sampling frequency of the original signal:</p>
+<div class="math notranslate nohighlight">
+\[f_{sy} = \frac{f_{sx}}{R}\]</div>
+<p>Downsampling expands and aliases the spectrum. In order to avoid the occurrence of aliasing in the decimated signal, components with frequencies <span class="math notranslate nohighlight">\(\omega &gt; \pi/R\)</span> need to be filtered out.
+The frequency spectrum of a purely downsampled signal can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[Y(e^{j\omega})=\frac{1}{R} \sum_{k=0}^{R-1}X(e^\frac{j(\omega-2\pi k)}{R})\]</div>
+<div class="figure" id="id1">
+<img alt="../_images/downsampling_aliasing.png" src="../_images/downsampling_aliasing.png" />
+<p class="caption"><span class="caption-text">Fig. 1. Effects of downsampling.</span></p>
+</div>
+<p>With a properly designed antialiasing filter all aliasing components can be eliminated, meaning that from the above term every component except first <span class="math notranslate nohighlight">\(k=0\)</span> vanishes.</p>
+<div class="figure" id="id2">
+<img alt="../_images/decimator.png" src="../_images/decimator.png" />
+<p class="caption"><span class="caption-text">Fig. 2. A block representation of a decimator.</span></p>
+</div>
+</div>
+<div class="section" id="upsampling">
+<h2>Upsampling<a class="headerlink" href="#upsampling" title="Permalink to this headline">¶</a></h2>
+<p>Upsampling is the process of increasing the sampling rate of the input signal that can also be called interpolation. The idea is that in order to increase the sampling frequency by an integer factor <span class="math notranslate nohighlight">\(L\)</span> a signal can be interpolated with <span class="math notranslate nohighlight">\(L-1\)</span> samples between the two existing samples of the original signal. Question remains on what should be the value of the interpolated samples, but the simplest solution is to interpolate the original signal with zeros. For an input signal x[n] the upsampled signal y[n] is defined as:</p>
+<div class="math notranslate nohighlight">
+\[y[n] = x[n/L], n = 0, \pm L, \pm 2L, ...\]</div>
+<div class="math notranslate nohighlight">
+\[y[n] = 0, n \neq 0, \pm L, \pm 2L, ...\]</div>
+<p>Sampling rate of the interpolated signal is <span class="math notranslate nohighlight">\(L\)</span> times higher than the sampling rate of the input signal.</p>
+<div class="math notranslate nohighlight">
+\[f_{sy} = L f_{sx}\]</div>
+<p>As it is with the downsampling process, upsampling a signal also leaves the spectrum of the signal impacted. Spectrum of such an interpolated signal is horizontally shrunk and replicated <span class="math notranslate nohighlight">\(L\)</span> times. Still, total energy remains unchanged.</p>
+<div class="math notranslate nohighlight">
+\[Y(e^{j\omega}) = X(e^{j\omega L})\]</div>
+<div class="figure" id="id3">
+<img alt="../_images/upsampling_aliasing.png" src="../_images/upsampling_aliasing.png" />
+<p class="caption"><span class="caption-text">Fig. 3. Effects of upsampling.</span></p>
+</div>
+<p>Because of these additional spectrum images of the original signal, upsampling is usually followed by a lowpass antialiasing filter designed to filter them out.</p>
+<div class="figure" id="id4">
+<img alt="../_images/interpolator.png" src="../_images/interpolator.png" />
+<p class="caption"><span class="caption-text">Fig. 4. A block representation of an interpolator.</span></p>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#multirate-example"><span class="std std-ref">Multirate processing</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mixing.html" class="btn btn-neutral float-right" title="Frequency Translations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="filtering.html" class="btn btn-neutral float-left" title="Filtering in Digital Domain" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

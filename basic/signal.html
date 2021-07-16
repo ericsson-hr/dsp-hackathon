@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Signals and Their Representations &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analog to Digital Conversion" href="adc.html" />
+    <link rel="prev" title="Basic Level" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Signals and Their Representations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discrete-fourier-transform">Discrete Fourier Transform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inverse-dft">Inverse DFT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fast-fourier-transform">Fast Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#complex-signals">Complex Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ofdm.html">OFDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>Signals and Their Representations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/signal.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="signals-and-their-representations">
+<h1>Signals and Their Representations<a class="headerlink" href="#signals-and-their-representations" title="Permalink to this headline">¶</a></h1>
+<p>A signal is a series of values spread out in time or any other domain. It can represent a non-physical quantity (e.g. a sequence of random numbers) or it can be a representation of a physical quantity (e.g. temperature or velocity). Signals can be observed as information carriers. They are generated by transmitters, received by receivers and processed by systems.</p>
+<div class="figure" id="id1">
+<img alt="../_images/sound.png" src="../_images/sound.png" />
+<p class="caption"><span class="caption-text">Fig. 1. A digitized sound signal.</span></p>
+</div>
+<p>In signal processing, we observe signals in time and frequency domain. While time domain naturally explains the content of the signal by a progressing series, frequency domain allows us to present the signal in terms of frequency components that the signal is composed of. Different operations of the <strong>Fourier analysis</strong> allow us to convert between the two domains, depending on the nature of the observed signal.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="37%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Time domain</th>
+<th class="head">Transform</th>
+<th class="head">Frequency domain</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Continuous
+Non-periodic</td>
+<td>Fourier transform</td>
+<td>Continuous
+Non-periodic</td>
+</tr>
+<tr class="row-odd"><td>Continuous
+Periodic</td>
+<td>Fourier series</td>
+<td>Discrete
+Non-periodic</td>
+</tr>
+<tr class="row-even"><td>Discrete
+Non-periodic</td>
+<td>Discrete-time
+Fourier transform</td>
+<td>Continuous
+Periodic</td>
+</tr>
+<tr class="row-odd"><td>Discrete
+Periodic</td>
+<td>Discrete Fourier
+transform  (DFT)</td>
+<td>Discrete
+Periodic</td>
+</tr>
+</tbody>
+</table>
+<p>From this table, we see that a continuous signal will have a non-periodic frequency spectrum. The <em>non-periodicity</em> can in fact be interpreted as infinitude of the signal. On the other hand, a time-periodic signal can be considered finite in its definition.</p>
+<p>For any signal processing purposes, signals can be viewed as discrete because the computer represents them as a series of numbers. Further, since the signals are finite in computer representation, we can analyze them by virtually repeating them, thus creating a periodic signal. This makes their frequency spectrum discrete as well, and enables us to analyze the signal in a computer in both domains.</p>
+<div class="section" id="discrete-fourier-transform">
+<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>At this point, it is clear that Discrete Fourier transform (DFT) is the appropriate method for analyzing a signal represented in a computer. So let’s briefly review the theory on DFT.</p>
+<p>For any given time-discrete signal <span class="math notranslate nohighlight">\(x_n\)</span>, it’s DFT series <span class="math notranslate nohighlight">\(X_k\)</span> is given as:</p>
+<div class="math notranslate nohighlight">
+\[X_k = \sum_{n=0}^{N-1} x_n \cdot e^{-i \frac{2\pi}{N} k n}\]</div>
+<p>Note the complex exponential (<span class="math notranslate nohighlight">\(e^{i}\)</span>) in the formula. The result will be a complex number, which can generally be written in a polar notation <span class="math notranslate nohighlight">\(R \cdot e^{i \phi}\)</span>. From this, we see that the spectrum can be separated into its amplitude component (<span class="math notranslate nohighlight">\(R\)</span>) and its phase component (<span class="math notranslate nohighlight">\(\phi\)</span>). An example of such spectrum is shown in Figure 2.</p>
+<div class="figure" id="id2">
+<img alt="../_images/dft.png" src="../_images/dft.png" />
+<p class="caption"><span class="caption-text">Fig. 2. An example of a rectangular signal and the corresponding <em>sinc</em> amplitude spectrum.</span></p>
+</div>
+<p>Consider the following:</p>
+<dl class="docutils">
+<dt>Spectrum is discrete</dt>
+<dd>As a result of time-periodicity of the signal (or its finitude), the spectrum is defined at discrete points <em>k</em>. These points are commonly referred to as <em>bins</em>.</dd>
+<dt>Signal is discrete …</dt>
+<dd>… and we therefore know exactly what the maximum frequency a signal may contain. Periodic spectra use normalized frequency domain, defined in the range <span class="math notranslate nohighlight">\(\Omega \in [-\pi, \pi]\)</span>. Spectrum is periodic. Therefore, it may be wrapped around, should that simplify analysis. Therefore, definition of <span class="math notranslate nohighlight">\(\Omega \in [0, 2\pi]\)</span> is just as valid.</dd>
+</dl>
+<p>Note that the amplitude spectrum, as seen in the above image, would be the same for a rectangular signal that is offset on the time scale. This is because the time-offset information is carried in the phase of the spectral components.</p>
+<div class="figure" id="id3">
+<img alt="../_images/phase_spectrum.png" src="../_images/phase_spectrum.png" />
+<p class="caption"><span class="caption-text">Fig. 3. Two time-offset rectangular signals and their corresponding phase spectra.</span></p>
+</div>
+<div class="section" id="inverse-dft">
+<h3>Inverse DFT<a class="headerlink" href="#inverse-dft" title="Permalink to this headline">¶</a></h3>
+<p>For any given discrete spectrum <span class="math notranslate nohighlight">\(X_k\)</span>, the corresponding time-discrete signal <span class="math notranslate nohighlight">\(x_n\)</span> is found as:</p>
+<div class="math notranslate nohighlight">
+\[x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k \cdot e^{i \frac{2\pi}{N} k n}\]</div>
+</div>
+<div class="section" id="fast-fourier-transform">
+<h3>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permalink to this headline">¶</a></h3>
+<p>A widely used algorithm for calculating DFT is the <em>Fast Fourier Transform</em> (FFT). It operates on the principle of factorizing the DFT problem into multiple DFT tasks of lesser complexity, and then recursively running the algorithm. The basic principle is presented in the diagram in Figure 4.</p>
+<div class="figure" id="id4">
+<img alt="../_images/fft.png" src="../_images/fft.png" />
+<p class="caption"><span class="caption-text">Fig. 4. An example of an FFT algorithm. Source: <a class="reference external" href="https://commons.wikimedia.org/wiki/File:DIT-FFT-butterfly.png">Wikimedia Commons</a>.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="complex-signals">
+<h2>Complex Signals<a class="headerlink" href="#complex-signals" title="Permalink to this headline">¶</a></h2>
+<p>So, as we’ve seen by an example of two time-offset signals, spectrum of a signal is made up of complex numbers. The same way, a signal can be either real or complex. While it is easy to understand how a signal can be mathematically represented by a complex number, the real-life utilization of such concept might not be evident. But let’s take one step at a time.</p>
+<p>Samples of a complex signal are made up of real and imaginary part. In signal processing, a complex signal is viewed as a pair of those real-valued series. While this concept may not seem advantageous right away, let’s consider the spectrum of a complex signal.</p>
+<p>You may have noticed in our first figure, the amplitude spectrum of a rectangular signal was symmetric around the <span class="math notranslate nohighlight">\(Ω=0\)</span> axis. Similarly, the phase spectra of the two exemplary rectangular signals later on were centrally symmetric against the <span class="math notranslate nohighlight">\((0,0)\)</span> point. This property is valid for all real signals, i.e. signals composed of a series of single real values. Strictly speaking, for a real signal <span class="math notranslate nohighlight">\(s(t)\)</span>, its Fourier transform <span class="math notranslate nohighlight">\(S(f)\)</span> has Hermitian symmetry around <span class="math notranslate nohighlight">\(f=0\)</span>, so that <span class="math notranslate nohighlight">\(S(-f) = S^*(f)\)</span>. Complex signals do not have this constraint, and spectrum can be freely determined for positive and negative frequencies alike.</p>
+<p>Extreme examples of how to utilize this property are <em>analytic signals</em>. These are constructed from a real signal prototype, with aim to completely remove their negative-frequency spectrum. For a prototype signal <span class="math notranslate nohighlight">\(s(t)\)</span> and its Fourier transform <span class="math notranslate nohighlight">\(S(f)\)</span>, the corresponding analytic signal is found by manipulating the spectrum as</p>
+<div class="math notranslate nohighlight">
+\[S_a(f) = S(f) + sgn(f) \cdot S(f)\]</div>
+<p>We then find the analytic signal by inverse Fourier transform as</p>
+<div class="math notranslate nohighlight">
+\[s_a(t) = s(t) + j\hat{s}(t)
+       = s(t) + j \left[ \frac{1}{\pi t} * s(t) \right]\]</div>
+<p>The <span class="math notranslate nohighlight">\(\hat{s}(t)\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Hilbert_transform">Hilbert transform</a> of <span class="math notranslate nohighlight">\(s(t)\)</span>.</p>
+<p>Analytic signals are an extreme example of complex signals. In general (and in practice) the imaginary part of a complex signal will not be a Hilbert transform of its real part. The two components will form a complex signal which has spectral components on both the left and the right side of the frequency axis.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since they consist of two independent components, complex signals double the information relayed through one signal, when compared to real signals. With complex signals, we <em>unlock</em> the left-hand side of the frequency axis, effectively doubling the information capacity in spectral domain as well.</p>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#a-sampled-spectrum"><span class="std std-ref">A Sampled Spectrum</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="adc.html" class="btn btn-neutral float-right" title="Analog to Digital Conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Basic Level" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

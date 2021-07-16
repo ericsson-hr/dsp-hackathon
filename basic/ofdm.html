@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OFDM &mdash; DSP Hackathon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/button.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignments" href="tasks.html" />
+    <link rel="prev" title="Antenna Arrays" href="antennas_arrays.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ericsson.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/propositions.html">Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/opening_ceremony.html">Opening Ceremony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/privacy.html">Privacy Notice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Level</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signals and Their Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adc.html">Analog to Digital Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html">Filtering in Digital Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multirate.html">Multirate Signal Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixing.html">Frequency Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulations.html">Modulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_basic.html">Basics of Antennas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antennas_arrays.html">Antenna Arrays</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OFDM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#channel-effects">Channel Effects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mitigating-dispersion">Mitigating Dispersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#channel-equalization">Channel Equalization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#related-assignments">Related Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/index.html">Intermediate Level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Level</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSP Hackathon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Basic Level</a> &raquo;</li>
+        
+      <li>OFDM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/basic/ofdm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ofdm">
+<h1>OFDM<a class="headerlink" href="#ofdm" title="Permalink to this headline">¶</a></h1>
+<p>Orthogonal frequency division multiplexing (OFDM) is an extension of the frequency division multiplexing (FDM) technique, though it is sometimes referred to as multicarrier modulation technique as well. The fundamental principle of classic FDM is to divide the available bandwidth into many narrow sub-bands and to use a number of parallel carriers within the available bandwidth to transfer the information. These parallel carriers possess guard intervals to prevent spectrum overlap and are strictly separated from each other, by which data integrity is preserved. This is a traditional approach and has been used in analog and digital transmission systems such as radio broadcasting, fixed telephony, GSM, etc.</p>
+<div class="figure" id="id1">
+<img alt="../_images/F1_fdm_C.svg" src="../_images/F1_fdm_C.svg" /><p class="caption"><span class="caption-text">Fig. 1. Traditional frequency division multiplex</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>On the other hand, the basic idea of OFDM (used e.g. in 4G mobile networks) is to allow the carriers within the spectrum to overlap, and to have an even larger number of narrow-band subcarriers within the allowed spectrum. The high-speed data sequence is parallelized and transferred at lower speeds at each subcarrier. That way, demands on the modulation procedure are relaxed while the total data rate remains high. An illustrative comparison between FDM and OFDM is given in Fig. 2.</p>
+<div class="figure" id="id2">
+<img alt="../_images/F6_Tap.png" src="../_images/F6_Tap.png" />
+<p class="caption"><span class="caption-text">Fig. 2. Analogy between data stream and water stream</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>To get into the workings of OFDM, let’s first note that a rectangular signal of unit amplitude and duration <span class="math notranslate nohighlight">\(T_S\)</span> has the frequency spectrum of the form of the <em>sinc</em> function:</p>
+<div class="math notranslate nohighlight">
+\[T_S\cdot \frac{\sin \left (\pi f T_S  \right )}{\pi f T_S}\]</div>
+<p>The property of such function it that it consists of a main lobe (around frequency zero) and sidelobes, and that zeros in frequency domain occur at each <span class="math notranslate nohighlight">\(\Delta f=\frac{1}{T_S}\)</span>.</p>
+<p>We now modulate the signal by multiplying it with a complex exponential <span class="math notranslate nohighlight">\(e^{-j \frac{2\pi}{T_{S}}t}\)</span>. Its frequency spectrum will shift by <span class="math notranslate nohighlight">\(\frac{1}{T_{S}}\)</span>. Now, the main lobe of the modulated signal occurs at the frequency where the spectrum of the original signal was zero. This principle is illustrated in Fig. 3. A similar effect would occur if modulation was done for any integer multiple of <span class="math notranslate nohighlight">\(\frac{1}{T_{S}}\)</span>.</p>
+<div class="figure" id="id3">
+<img alt="../_images/F2_OFDM_principle.svg" src="../_images/F2_OFDM_principle.svg" /><p class="caption"><span class="caption-text">Fig. 3. The principle of spectrum overlapping without interference for two subcarriers.</span></p>
+<div class="legend">
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<p>To apply this onto signals containing actual data, let’s take a QAM-modulated symbol <span class="math notranslate nohighlight">\(S_a\)</span> with its own amplitude and phase: <span class="math notranslate nohighlight">\(S_a=S_0 \cdot e^{j\varphi_0 }\)</span>. This symbol can be modulated to a sub-carrier frequency <span class="math notranslate nohighlight">\(f_\textrm{sc}\)</span>, and presented as a subcarrier <span class="math notranslate nohighlight">\(s_a(t)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[s_a\left ( t \right )=S_a \cdot e^{j2\pi f_\textrm{sc} t}\]</div>
+<p>The duration of the symbol is <span class="math notranslate nohighlight">\(T_S\)</span>, which we can observe as if the signal has been windowed by a rectangular pulse of duration <span class="math notranslate nohighlight">\(T_S\)</span>. That way, the spectrum of a subcarrier will still have a <em>sinc</em> shape, with zeros at <span class="math notranslate nohighlight">\(\frac {k} {T_S}\)</span> for any integer <em>k</em>.</p>
+<p>Now, we can take as many such subcarriers and place them at a distance <span class="math notranslate nohighlight">\(\Delta f = \frac{k}{T_S}\)</span> and be sure that they will not interfere with each other. The resulting signal with <em>N</em> subcarriers is then</p>
+<div class="math notranslate nohighlight">
+\[s\left(t\right)=\frac{1}{N}\sum_{k=0}^{N-1}S_k\cdot  e^{j \frac{2\pi k}{T_S}t}\]</div>
+<p>The normalization factor <span class="math notranslate nohighlight">\(1/N\)</span> is added for convention. The data in this signal is contained at discrete frequency points <span class="math notranslate nohighlight">\(\Delta f = \frac{k}{T_S}\)</span>. We can sample this signal at <span class="math notranslate nohighlight">\(t_s=\frac{T_S}{N}\)</span> to obtain a discrete signal</p>
+<div class="math notranslate nohighlight">
+\[s_n=\frac{1}{N}\sum_{k=0}^{N-1}S_k\cdot  e^{j \frac{2\pi k}{N}n}\]</div>
+<p>We recognize this as <a class="reference internal" href="signal.html#inverse-dft"><span class="std std-ref">Inverse DFT</span></a>. The continuous signal <span class="math notranslate nohighlight">\(s(t)\)</span> and its discrete counterpart <span class="math notranslate nohighlight">\(s_n\)</span> are both referred to as an <strong>OFDM symbol</strong>. IDFT and DFT are the primary method of assembling and, respectively, disassembling an OFDM symbol. The receiver will thus be performing DFT, to find the symbol as</p>
+<div class="math notranslate nohighlight">
+\[S_k=\sum_{n=0}^{N-1}s_n\cdot e^{-j \frac{2\pi n}{N}k}\]</div>
+<dl class="docutils">
+<dt>Discussion</dt>
+<dd></dd>
+</dl>
+<ul class="simple">
+<li>The spectrum of an OFDM symbol consists of <em>N</em> <em>sinc</em> functions separated by <span class="math notranslate nohighlight">\(\Delta f=f_\textrm{sc}=\frac{k}{T_S}\)</span> in frequency. The main lobe of each <em>k</em>-th component is present at a frequency point where all other components are at zero amplitude. This is a generalization of the situation in Fig. 3.</li>
+<li>The total spectrum occupies the bandwidth of <span class="math notranslate nohighlight">\(N \cdot \Delta f\)</span>. The duration of the OFDM symbol <span class="math notranslate nohighlight">\(T_S\)</span> determines the <em>frequency resolution</em> <span class="math notranslate nohighlight">\(\Delta f=\frac{1}{T_S}\)</span>. The larger the OFDM duration, the better the frequency resolution.</li>
+<li>The duration of the OFDM symbol is relatively large, meaning that each subcarrier exhibits a rather low data rate. However, the total data rate is still large as the information at multiple subcarriers is transferred in parallel during the same time frame <span class="math notranslate nohighlight">\(T_S\)</span>. The lower data rate in subcarriers relaxes the demand on their modulation, so we may use a less complex modulation technique such as QPSK or 16-QAM.</li>
+</ul>
+<p>The principal schematic of an OFDM transmitter is given in Fig. 4. The input bitstream is parallelized into <em>N</em> chunks, each of which will adhere to a certain subcarrier in an OFDM symbol. The method of mapping these chunks onto subcarriers is usually defined by a standard. These chunks are then mapped to a QAM symbol to assign them with amplitude and phase as defined by QAM symbol mapping. The obtained QAM symbols are inputs to an IDFT block. The ouput of this block is an OFDM symbol, which can then be converted by a DAC to analog domain.</p>
+<div class="figure" id="id4">
+<img alt="../_images/F3_OFDM_TX.svg" src="../_images/F3_OFDM_TX.svg" /><p class="caption"><span class="caption-text">Fig. 4. Basic block schematic of an OFDM transmitter.</span></p>
+<div class="legend">
+</div>
+</div>
+<p>At the receiver side, inverse steps are performed, as seen in Fig. 5. Input analog signal is digitized and DFT is performed. The frequency coefficients, which are sampled at the correct frequencies of all subcarriers, are given as input to QAM demodulators. The output information is serialized by applying the mapping determined by the standard.</p>
+<div class="figure" id="id5">
+<img alt="../_images/F4_OFDM_RX.svg" src="../_images/F4_OFDM_RX.svg" /><p class="caption"><span class="caption-text">Fig. 5. Basic block schematic of an OFDM receiver.</span></p>
+<div class="legend">
+</div>
+</div>
+<div class="section" id="channel-effects">
+<h2>Channel Effects<a class="headerlink" href="#channel-effects" title="Permalink to this headline">¶</a></h2>
+<p>The described process of obtaining, transferring and decoding an OFDM signal would work only in an ideal scenario. Realistically, when the signal is transferred through a real channel, the noise and interference from the channel will be added to the OFDM signal to produce a distorted signal. There are several methods to combat these effects.</p>
+<div class="section" id="mitigating-dispersion">
+<h3>Mitigating Dispersion<a class="headerlink" href="#mitigating-dispersion" title="Permalink to this headline">¶</a></h3>
+<p>Multipath propagation results in dispersion of OFDM symbol. Just as an echo, the signal will arrive to the receiver via multiple paths, and finally add up at the receiver. To solve this problem, a <em>guard interval</em> can be used. This interval can be filled up with a blank signal, or something other. Commonly, guard interval is composed by copying the ending segment of the OFDM symbol (in time domain) and appending it to the start of the symbol. Normally, 10% to 25% of the symbol is copied. This method is termed <strong>cyclic prefix</strong>.</p>
+<p>Although it results in prolonged duration of the OFDM symbol, it is successful in shielding the signal from dispersion. It also adds some redundancy to the signal. The presence of a cyclic prefix will not interfere with DFT, short of adding some common phase shift to all subcarriers. This property is also useful when attempting to synchronize the receiver to the start of an OFDM symbol.</p>
+</div>
+<div class="section" id="channel-equalization">
+<h3>Channel Equalization<a class="headerlink" href="#channel-equalization" title="Permalink to this headline">¶</a></h3>
+<p>Every channel acts as a filter. It can be measured and its response plotted as amplitude and phase response. As a typical OFDM signal is rather wide in bandwidth, channel characteristic can significantly degrade it. Equalization should be performed at the receiver to revert the signal to its original state.</p>
+<p>To measure the channel characteristic, some subcarriers are populated with a predefined pseudorandom sequence. These subcarriers can be placed at frequency points that we define by the standard. They are called <strong>pilots</strong>. Their purpose is to present the channel characteristic to the receiver, as they will be distorted the same way as any other data subcarrier would. The receiver can use this information to interpolate the channel response.</p>
+<p>Once we have that information, the receiver will produce an inverse filter to cancel out the channel distortion that the signal has suffered.</p>
+</div>
+</div>
+<div class="section" id="related-assignments">
+<h2>Related Assignments<a class="headerlink" href="#related-assignments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter is accompanied by a demo example <a class="reference internal" href="tasks.html#ofdm-generator"><span class="std std-ref">OFDM symbol generator</span></a> and a self-study assignment <a class="reference internal" href="tasks.html#ofdm-demodulator"><span class="std std-ref">OFDM symbol demodulator</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tasks.html" class="btn btn-neutral float-right" title="Assignments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="antennas_arrays.html" class="btn btn-neutral float-left" title="Antenna Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA license</a>, <a href="https://www.ericsson.hr/">Ericsson Nikola Tesla d.d.</a>, 2021
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
