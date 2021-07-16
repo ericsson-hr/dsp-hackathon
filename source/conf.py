@@ -113,6 +113,9 @@ html_css_files = [
     'button.css'
 ]
 
+# Copyright will be presented with the license in extrafooter
+html_show_copyright = False
+
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.

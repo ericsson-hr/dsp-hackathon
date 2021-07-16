@@ -16,10 +16,20 @@ The competition is open to Croatian citizens. We highly encourage students pursu
 
 As you solve different tasks, you will be able to post your solutions via GitHub. Only you and reviewers from Ericsson Nikola Tesla will be able to view your solutions. You will then receive a review, which will enable you to move on to the next level. The best performers will be rewarded and offered a job interview or internship at Ericsson Nikola Tesla.
 
+Notice
+-------
+
 **DSP Hackathon is finished!** The competition started on May 21, 2021 and ended on June 28, 2021.
 
-dsp-hackathon@ericsson.hr
+On this page, you can find all the material used in DSP Hackathon -- theoretical background, exercises and assignments. You can use this material for self-learning.
 
+
+.. raw:: html
+
+   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0; width:88px" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /><a>
+   <br />
+   <font style="font-size:12px">The content published on this page is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</font>
+   
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -27,7 +37,8 @@ dsp-hackathon@ericsson.hr
    about/propositions
    about/opening_ceremony
    about/privacy
-   about/rewards
    basic/index
+   intermediate/index
+   advanced/index
 
 .. image:: _static/banner.png
